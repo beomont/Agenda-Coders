@@ -5,6 +5,7 @@ import org.agenda.model.Address;
 import org.agenda.model.Contact;
 import org.agenda.model.Telephone;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,6 +24,7 @@ public class ContactUI {
         surname = sc.nextLine();
 
         contactController.save(name, surname);
+
     }
 
     public static void list(List<Contact> contacts) {
@@ -32,6 +34,7 @@ public class ContactUI {
             System.out.println("Index: " + index);
             System.out.println("Nome: " + contact.getName());
             System.out.println("Sobrenome: " + contact.getSurname());
+            System.out.println("Endereço: " + contact.getAllAddresses());
             System.out.println("----------------------");
             index++;
         }
@@ -63,6 +66,7 @@ public class ContactUI {
         System.out.println("Sobrenome: " + contact.getSurname());
         System.out.println("----------------------");
 
+
         for (Telephone telephone: contact.getAllTelephones()) {
             System.out.println("DDD: " + telephone.getDdd());
             System.out.println("Número: " + telephone.getNumber());
@@ -72,4 +76,6 @@ public class ContactUI {
             System.out.println("Endereço: " + address.getAddress());
         }
     }
+
+
 }

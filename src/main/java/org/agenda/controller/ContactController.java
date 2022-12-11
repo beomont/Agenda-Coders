@@ -1,8 +1,11 @@
 package org.agenda.controller;
 
+import org.agenda.model.Address;
 import org.agenda.model.Contact;
+import org.agenda.views.AddressUI;
 import org.agenda.views.ContactUI;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class ContactController {
@@ -57,6 +60,34 @@ public class ContactController {
 
         Contact contact = new Contact();
         ContactUI.view(contact.get(index));
+
+        menuInsercao(index);
+
+    }
+
+    public void menuInsercao(int index){
+        System.out.println(".:: DESEJA INSERIR UM TELEFONE OU ENDEREÇO?");
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("[1] - TELEFONE");
+        System.out.println("[2] - ENDEREÇO");
+       String choose = sc.nextLine();
+
+       switch (choose){
+           case "1":
+               break;
+           case "2":
+               AddressController.create(index);
+               break;
+
+
+        }
+
+
+
+
+
 
     }
 }

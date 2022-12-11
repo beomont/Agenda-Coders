@@ -22,6 +22,7 @@ public class Contact {
         telephones = new ArrayList<>();
     }
 
+
     public List<Contact> getAll() {
         Database db = Database.getInstance();
         return db.getContacts();
@@ -96,4 +97,6 @@ public class Contact {
     public void addAddress(Address address) {
         addresses.add(address);
     }
+
+
 }
