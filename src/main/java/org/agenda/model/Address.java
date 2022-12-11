@@ -58,4 +58,15 @@ public class Address {
     public void setCity(String city) {
         this.city = city;
     }
+
+    @Override
+    public String toString() {
+        return "Endereço{" +
+                "CEP: " + cep +
+                ", Logradouro: " + address +
+                ", Número: " + number +
+                ", Estado: " + state +
+                ", Cidade: " + city +
+                '}';
+    }
 }
