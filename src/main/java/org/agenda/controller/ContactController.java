@@ -65,38 +65,52 @@ public class ContactController {
 
     }
 
-    public void menuInsercao(int index){
-        //TO DO Fazer com que o Looping continue caso opção default seja acionada.
-        System.out.println(".:: DESEJA INSERIR UM TELEFONE OU ENDEREÇO? ::.");
+    public void menuInsercao(int index) {
+        boolean executing = true;
 
-        Scanner sc = new Scanner(System.in);
+        while (executing) {
 
-        System.out.println("[1] - SIM");
-        System.out.println("[2] - NÃO");
-        String chooseInsert = sc.nextLine();
+            System.out.println(".:: DESEJA EDITAR O CONTATO? ::.");
 
-        switch (chooseInsert) {
-            case "1":
-                System.out.println(".:: SELECIONE A OPÇÃO QUE DESEJA INSERIR ::.");
-                System.out.println("[1] - TELEFONE");
-                System.out.println("[2] - ENDEREÇO");
-                String choose = sc.nextLine();
-                switch (choose) {
-                    case "1":
-                        break;
-                    case "2":
-                        AddressController.create(index);
-                        break;
-                    default:
-                        System.out.printf("Opção (%s) é inválida!", choose);
-                }
-                break;
-            case "2":
-                break;
-            default:
-                System.out.printf("Opção (%s) é inválida!", chooseInsert);
+            Scanner sc = new Scanner(System.in);
+
+            System.out.println("[1] - SIM");
+            System.out.println("[2] - NÃO");
+            String chooseInsert = sc.nextLine();
+
+            switch (chooseInsert) {
+                case "1":
+                    System.out.println(".:: SELECIONE A OPÇÃO QUE DESEJA EDITAR ::.");
+                    System.out.println("[1] - ADICIONAR TELEFONE");
+                    System.out.println("[2] - REMOVER TELEFONE");
+                    System.out.println("[3] - ADICIONAR ENDEREÇO");
+                    System.out.println("[4] - REMOVER ENDEREÇO");
+                    String choose = sc.nextLine();
+
+                    switch (choose) {
+                        case "1":
+                            //CONTROLERTELEFONE CREATE
+                            break;
+                        case "2":
+                            //CONTROLERTELEFONE REMOVE
+                            break;
+                        case "3":
+                            AddressController.create(index);
+                            break;
+                        case "4":
+                            //REMOVE ENDEREÇO
+                            break;
+                        default:
+                            System.out.printf("Opção (%s) é inválida!%n%n", choose);
+                    }
+                    break;
+                case "2":
+                    executing = false;
+                    break;
+                default:
+                    System.out.printf("Opção (%s) é inválida!%n%n", chooseInsert);
+            }
+
         }
-
-
     }
 }

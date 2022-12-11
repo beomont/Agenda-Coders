@@ -1,1 +1,25 @@
-{"contacts":[{"surname":"Sobrenome","name":"Nome"},{"surname":"lopes","name":"Bruno"}]}
+{
+  "contacts": [
+    {
+      "addresses": [
+        {
+          "number": "125",
+          "address": "VITORIA DA CONQUISTA",
+          "city": "GRU",
+          "state": "SP",
+          "cep": "0718000"
+        },
+        {
+          "number": "130",
+          "address": "rua vitoria 2",
+          "city": "SP",
+          "state": "sp",
+          "cep": "07195555"
+        }
+      ],
+      "surname": "Lopes",
+      "name": "Bruno",
+      "telephones": []
+    }
+  ]
+}
