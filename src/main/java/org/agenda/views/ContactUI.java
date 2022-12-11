@@ -64,7 +64,7 @@ public class ContactUI {
         System.out.println("-----CONTATO-----");
         System.out.println("Nome: " + contact.getName());
         System.out.println("Sobrenome: " + contact.getSurname());
-        System.out.println("----------------------");
+
 
 
         for (Telephone telephone: contact.getAllTelephones()) {
@@ -73,8 +73,11 @@ public class ContactUI {
         }
 
         for (Address address : contact.getAllAddresses()) {
-            System.out.println("Endereço: " + address.getAddress());
+            System.out.println("Endereço: " + address.getAddress() + ", " + address.getNumber() + ", " + address.getCep()
+                    + " - " + address.getCity() + " - " + address.getState());
         }
+
+        System.out.println("----------------------");
     }
 
 

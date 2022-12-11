@@ -66,27 +66,36 @@ public class ContactController {
     }
 
     public void menuInsercao(int index){
-        System.out.println(".:: DESEJA INSERIR UM TELEFONE OU ENDEREÇO?");
+        //TO DO Fazer com que o Looping continue caso opção default seja acionada.
+        System.out.println(".:: DESEJA INSERIR UM TELEFONE OU ENDEREÇO? ::.");
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("[1] - TELEFONE");
-        System.out.println("[2] - ENDEREÇO");
-       String choose = sc.nextLine();
+        System.out.println("[1] - SIM");
+        System.out.println("[2] - NÃO");
+        String chooseInsert = sc.nextLine();
 
-       switch (choose){
-           case "1":
-               break;
-           case "2":
-               AddressController.create(index);
-               break;
-
-
+        switch (chooseInsert) {
+            case "1":
+                System.out.println(".:: SELECIONE A OPÇÃO QUE DESEJA INSERIR ::.");
+                System.out.println("[1] - TELEFONE");
+                System.out.println("[2] - ENDEREÇO");
+                String choose = sc.nextLine();
+                switch (choose) {
+                    case "1":
+                        break;
+                    case "2":
+                        AddressController.create(index);
+                        break;
+                    default:
+                        System.out.printf("Opção (%s) é inválida!", choose);
+                }
+                break;
+            case "2":
+                break;
+            default:
+                System.out.printf("Opção (%s) é inválida!", chooseInsert);
         }
-
-
-
-
 
 
     }
