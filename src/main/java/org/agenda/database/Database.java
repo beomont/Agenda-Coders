@@ -1,6 +1,8 @@
 package org.agenda.database;
 
+import org.agenda.model.Address;
 import org.agenda.model.Contact;
+import org.agenda.model.Telephone;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -34,10 +36,45 @@ public class Database {
         JSONObject contactsObjects = new JSONObject(String.join(" ", Files.readAllLines(dbPath, StandardCharsets.UTF_8)));
         JSONArray contactsArray = (JSONArray) contactsObjects.get("contacts");
         for (Object contactObject : contactsArray) {
+
             JSONObject contact = (JSONObject) contactObject;
             String name = (String) contact.get("name");
             String surname = (String) contact.get("surname");
-            contacts.add(new Contact(name, surname));
+            Contact newContact = new Contact(name, surname);
+            getAddresses(contact, newContact);
+            getTelephones(contact, newContact);
+            contacts.add(newContact);
+        }
+    }
+
+    private void getAddresses(JSONObject contactObj, Contact newContact) {
+        JSONArray AddressList = new JSONArray(contactObj.get("addresses").toString());
+
+        for (int j = 0; j < AddressList.length(); j++) {
+            JSONObject address = new JSONObject(AddressList.get(j).toString());
+
+            Address convertedAddress = new Address(
+                    address.get("cep").toString(),
+                    address.get("address").toString(),
+                    address.get("number").toString(),
+                    address.get("state").toString(),
+                    address.get("city").toString()
+            );
+            newContact.addAddress(convertedAddress);
+        }
+    }
+
+    private void getTelephones(JSONObject contactObj, Contact newContact) {
+        JSONArray TelephonesList = new JSONArray(contactObj.get("telephones").toString());
+
+        for (int j = 0; j < TelephonesList.length(); j++) {
+            JSONObject telephone = new JSONObject(TelephonesList.get(j).toString());
+
+            Telephone ConvertedPhone = new Telephone(
+                    telephone.get("ddd").toString(),
+                    telephone.get("number").toString()
+            );
+            newContact.addTelephone(ConvertedPhone);
         }
     }
 
@@ -53,6 +90,8 @@ public class Database {
             JSONObject contactObject = new JSONObject();
             contactObject.put("name", contact.getName());
             contactObject.put("surname", contact.getSurname());
+            contactObject.put("addresses", contact.getAllAddresses());
+            contactObject.put("telephones", contact.getAllTelephones());
             contactsArray.put(contactObject);
         }
 
