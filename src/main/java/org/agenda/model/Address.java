@@ -1,5 +1,7 @@
 package org.agenda.model;
 
+import java.util.Objects;
+
 public class Address {
     private String cep;
     private String address;
@@ -69,4 +71,18 @@ public class Address {
                 ", Cidade: " + city +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address1 = (Address) o;
+        return Objects.equals(cep, address1.cep) && Objects.equals(address, address1.address) && Objects.equals(number, address1.number) && Objects.equals(state, address1.state) && Objects.equals(city, address1.city);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cep, address, number, state, city);
+    }
+
 }

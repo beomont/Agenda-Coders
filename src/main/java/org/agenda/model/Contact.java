@@ -1,8 +1,10 @@
 package org.agenda.model;
 
 import org.agenda.database.Database;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Contact {
     private String name;
@@ -37,9 +39,9 @@ public class Contact {
         List<Contact> contacts = this.getAll();
         List<Contact> matchContacts = new ArrayList<>();
 
-        for (Contact contact: contacts) {
+        for (Contact contact : contacts) {
             String fullName = contact.getName() + " " + contact.getSurname();
-            if(fullName.contains(value)) {
+            if (fullName.contains(value)) {
                 matchContacts.add(contact);
             }
         }
@@ -49,6 +51,8 @@ public class Contact {
     public boolean save() {
         Database db = Database.getInstance();
         List<Contact> contacts = db.getContacts();
+
+        if (contacts.contains(this)) return false;
 
         contacts.add(this);
         return true;
@@ -86,25 +90,45 @@ public class Contact {
         return telephones;
     }
 
-    public void addTelephone(Telephone telephone) {
+    public boolean addTelephone(Telephone telephone) {
+
+        if (telephones.contains(telephone)) return false;
+
         telephones.add(telephone);
+        return true;
     }
 
     public List<Address> getAllAddresses() {
         return addresses;
     }
 
-    public void addAddress(Address address) {
+    public boolean addAddress(Address address) {
+
+        if (addresses.contains(address)) return false;
+
         addresses.add(address);
+        return true;
     }
 
-    public void removeAddress(int index){
-       addresses.remove(index);
+    public void removeAddress(int index) {
+        addresses.remove(index);
     }
 
-    public void removeTelephone(int index){
+    public void removeTelephone(int index) {
         telephones.remove(index);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contact contact = (Contact) o;
+        return name.equals(contact.name) && surname.equals(contact.surname);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname);
+    }
 
 }

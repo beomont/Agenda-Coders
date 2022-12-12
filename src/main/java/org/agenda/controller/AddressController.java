@@ -22,7 +22,11 @@ public class AddressController {
         String cidade = camposAddress.get(4).toString();
 
         Address address = new Address(cep, logradouro, numero, estado, cidade);
-        contact.get(index).addAddress(address);
+        if(contact.get(index).addAddress(address)) {
+            System.out.println("Endereço Salvo!");
+        } else {
+            System.out.println("Endereço já cadastrado.");
+        }
 
     }
 

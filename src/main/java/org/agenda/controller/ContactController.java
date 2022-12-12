@@ -31,9 +31,9 @@ public class ContactController {
     public void save(String name, String surname) {
         Contact contact = new Contact(name, surname);
         if (contact.save()) {
-            System.out.println("contato salvo");
+            System.out.println("Contato salvo");
         } else {
-            System.out.println("erro ao salvar o contato");
+            System.out.println("Contato duplicado!");
         }
     }
 

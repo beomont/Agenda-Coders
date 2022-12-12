@@ -21,7 +21,12 @@ public class TelephoneController {
 
 
         Telephone telephone = new Telephone(ddd, numero);
-        contact.get(index).addTelephone(telephone);
+
+        if(contact.get(index).addTelephone(telephone)){
+            System.out.println("Telefone Salvo!");
+        } else {
+            System.out.println("Telefone já cadastrado.");
+        }
 
     }
 
