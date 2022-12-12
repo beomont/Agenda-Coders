@@ -1,24 +1,23 @@
 {
   "contacts": [
     {
+      "addresses": [],
+      "surname": "RIBEIRO",
+      "name": "FILIPE",
+      "telephones": []
+    },
+    {
       "addresses": [
         {
-          "number": "125",
-          "address": "VITORIA DA CONQUISTA",
-          "city": "GRU",
-          "state": "SP",
-          "cep": "0718000"
-        },
-        {
-          "number": "130",
-          "address": "rua vitoria 2",
-          "city": "SP",
-          "state": "sp",
-          "cep": "07195555"
+          "number": "BBB",
+          "address": "BBB",
+          "city": "BB",
+          "state": "BBB",
+          "cep": "BBB"
         }
       ],
-      "surname": "Lopes",
-      "name": "Bruno",
+      "surname": "LOPES",
+      "name": "BRUNO",
       "telephones": []
     }
   ]

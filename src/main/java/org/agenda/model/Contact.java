@@ -98,5 +98,9 @@ public class Contact {
         addresses.add(address);
     }
 
+    public void removeAddress(int index){
+       addresses.remove(index);
+    }
+
 
 }

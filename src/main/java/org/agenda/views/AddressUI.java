@@ -2,7 +2,9 @@ package org.agenda.views;
 
 import org.agenda.controller.AddressController;
 import org.agenda.controller.ContactController;
+import org.agenda.database.Database;
 import org.agenda.model.Address;
+import org.agenda.model.Contact;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +41,22 @@ public class AddressUI {
 
         return camposAdress;
 
+    }
+
+    public static int delete(int index){
+        Contact contact = Database.getInstance().getContacts().get(index);
+        Scanner sc = new Scanner(System.in);
+
+        for (int i = 0; i < contact.getAllAddresses().size(); i++){
+            System.out.println("Index: |" + i  + "| "+ contact.getAllAddresses().get(i));
+        }
+
+
+        //TO DO SE USUÁRIO INSERIR INDEX INCORRETO, FAZER O TRATAMENTO
+        System.out.print("QUAL INDEX DESEJA EXCLUIR? ");
+        int indexEscolhido = sc.nextInt();
+
+        return indexEscolhido;
     }
 
 }

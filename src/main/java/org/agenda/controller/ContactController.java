@@ -61,11 +61,11 @@ public class ContactController {
         Contact contact = new Contact();
         ContactUI.view(contact.get(index));
 
-        menuInsercao(index);
+        menuEdit(index);
 
     }
 
-    public void menuInsercao(int index) {
+    public void menuEdit(int index) {
         boolean executing = true;
 
         while (executing) {
@@ -98,7 +98,7 @@ public class ContactController {
                             AddressController.create(index);
                             break;
                         case "4":
-                            //REMOVE ENDEREÇO
+                            AddressController.remove(index);
                             break;
                         default:
                             System.out.printf("Opção (%s) é inválida!%n%n", choose);

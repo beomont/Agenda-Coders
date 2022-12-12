@@ -1,5 +1,6 @@
 package org.agenda.controller;
 
+import org.agenda.database.Database;
 import org.agenda.model.Address;
 import org.agenda.model.Contact;
 import org.agenda.views.AddressUI;
@@ -23,6 +24,11 @@ public class AddressController {
         Address address = new Address(cep, logradouro, numero, estado, cidade);
         contact.get(index).addAddress(address);
 
+    }
+
+    public static void remove(int index) {
+        Contact contact = Database.getInstance().getContacts().get(index);
+        contact.removeAddress(AddressUI.delete(index));
     }
 
 
