@@ -102,5 +102,9 @@ public class Contact {
        addresses.remove(index);
     }
 
+    public void removeTelephone(int index){
+        telephones.remove(index);
+    }
+
 
 }

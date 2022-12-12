@@ -34,7 +34,6 @@ public class ContactUI {
             System.out.println("Index: " + index);
             System.out.println("Nome: " + contact.getName());
             System.out.println("Sobrenome: " + contact.getSurname());
-            System.out.println("Endereço: " + contact.getAllAddresses());
             System.out.println("----------------------");
             index++;
         }

@@ -2,22 +2,39 @@
   "contacts": [
     {
       "addresses": [],
-      "surname": "RIBEIRO",
-      "name": "FILIPE",
+      "surname": "LOPESS",
+      "name": "BRUNO LOPES",
+      "telephones": []
+    },
+    {
+      "addresses": [],
+      "surname": "SHAUSHAUSHAPDLSDPS",
+      "name": "MURILO",
       "telephones": []
     },
     {
       "addresses": [
         {
-          "number": "BBB",
-          "address": "BBB",
-          "city": "BB",
-          "state": "BBB",
-          "cep": "BBB"
+          "number": "130",
+          "address": "RUA TESTE 2",
+          "city": "GRU",
+          "state": "SP",
+          "cep": "99999"
         }
       ],
-      "surname": "LOPES",
-      "name": "BRUNO",
+      "surname": "FERREIRA",
+      "name": "WASHINGTON",
+      "telephones": [
+        {
+          "number": "88888-8888",
+          "ddd": "99"
+        }
+      ]
+    },
+    {
+      "addresses": [],
+      "surname": "ARAUJO",
+      "name": "RENAN",
       "telephones": []
     }
   ]

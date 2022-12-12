@@ -28,4 +28,12 @@ public class Telephone {
     public void setNumber(String number) {
         this.number = number;
     }
+
+    @Override
+    public String toString() {
+        return "Telephone{" +
+                "ddd='" + ddd + '\'' +
+                ", number='" + number + '\'' +
+                '}';
+    }
 }

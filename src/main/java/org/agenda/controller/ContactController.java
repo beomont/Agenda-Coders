@@ -89,10 +89,10 @@ public class ContactController {
 
                     switch (choose) {
                         case "1":
-                            //CONTROLERTELEFONE CREATE
+                            TelephoneController.create(index);
                             break;
                         case "2":
-                            //CONTROLERTELEFONE REMOVE
+                            TelephoneController.remove(index);
                             break;
                         case "3":
                             AddressController.create(index);
