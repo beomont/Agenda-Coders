@@ -108,10 +108,10 @@ public class ContactController {
 //                            TelephoneController.remove(index);
                             break;
                         case "3":
-                            AddressController.create(index);
+//                            AddressController.create(index);
                             break;
                         case "4":
-                            AddressController.remove(index);
+//                            AddressController.remove(index);
                             break;
                         default:
                             System.out.printf("Opção (%s) é inválida!%n%n", choose);

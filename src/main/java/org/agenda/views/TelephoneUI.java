@@ -2,6 +2,7 @@ package org.agenda.views;
 
 import org.agenda.controller.TelephoneController;
 import org.agenda.model.Contact;
+import org.agenda.model.Telephone;
 import org.agenda.utils.Input;
 import org.agenda.utils.MenuCreator;
 
@@ -110,8 +111,11 @@ public class TelephoneUI {
 
     public static int delete(Contact contact) throws Exception {
         System.out.println("------ TELEFONES ------");
+
         for (int i = 0; i < contact.getAllTelephones().size(); i++) {
-            System.out.println("ID: " + i + " NUMERO: (" + contact.getAllTelephones().get(i).getDdd() + ") " + contact.getAllTelephones().get(i).getNumber());
+            Telephone phoneTemp = contact.getAllTelephones().get(i);
+            System.out.println(" ID: " + i);
+            System.out.println(" NUMERO: (" + phoneTemp.getDdd() + ") " + phoneTemp.getNumber());
         }
 
         int indexEscolhido = Input.integer("DIGITE O ID DO TELEFONE QUE DESEJA REMOVER: ");
