@@ -27,7 +27,7 @@ public class Home {
                     contactController.create();
                 }
                 case 2 -> {
-                    contactController.list();
+                    contactController.paginatedList();
                 }
                 case 3 -> {
                     contactController.search(null);
