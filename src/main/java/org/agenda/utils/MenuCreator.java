@@ -16,7 +16,7 @@ public class MenuCreator {
                     System.out.printf("[%d] - %s\n", i, options[i]);
                 }
 
-                System.out.print("Escolha uma das opções: ");
+                System.out.print("ESCOLHA UMA DAS OPÇÕES: ");
                 chooseYourDestiny = Input.integer();
 
                 System.out.println("");

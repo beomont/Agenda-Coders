@@ -14,25 +14,25 @@ public class AddressUI {
         List<String> camposAdress = new ArrayList<>();
         String cep, street, number, state, city;
 
-        System.out.println("Adicionar Endereço:");
+        System.out.println("ADICIONAR ENDEREÇO:");
 
         System.out.print("CEP: ");
         cep = sc.nextLine();
         camposAdress.add(cep);
 
-        System.out.print("Logradouro: ");
+        System.out.print("LOGRADOURO: ");
         street = sc.nextLine();
         camposAdress.add(street);
 
-        System.out.print("Numero: ");
+        System.out.print("NÚMERO: ");
         number = sc.nextLine();
         camposAdress.add(number);
 
-        System.out.print("Estado: ");
+        System.out.print("ESTADO: ");
         state = sc.nextLine();
         camposAdress.add(state);
 
-        System.out.print("Cidade: ");
+        System.out.print("CIDADE: ");
         city = sc.nextLine();
         camposAdress.add(city);
 
@@ -45,12 +45,12 @@ public class AddressUI {
         Scanner sc = new Scanner(System.in);
 
         for (int i = 0; i < contact.getAllAddresses().size(); i++) {
-            System.out.println("Index: |" + i + "| " + contact.getAllAddresses().get(i));
+            System.out.println("ID: |" + i + "| " + contact.getAllAddresses().get(i));
         }
 
 
         //TO DO SE USUÁRIO INSERIR INDEX INCORRETO, FAZER O TRATAMENTO
-        System.out.print("QUAL INDEX DESEJA EXCLUIR? ");
+        System.out.print("QUAL ID DESEJA EXCLUIR? ");
         int indexEscolhido = sc.nextInt();
 
         return indexEscolhido;

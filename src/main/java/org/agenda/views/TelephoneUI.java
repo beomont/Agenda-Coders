@@ -13,14 +13,14 @@ public class TelephoneUI {
         List<String> camposTelephone = new ArrayList<>();
         String ddd, numero;
 
-        System.out.println("Adicionar Telefone:");
+        System.out.println("ADICIONAR TELEFONE:");
 
         System.out.print("DDD: ");
         ddd = sc.nextLine();
         camposTelephone.add(ddd);
 
 
-        System.out.print("Numero: ");
+        System.out.print("NUMERO:");
         numero = sc.nextLine();
         camposTelephone.add(numero);
 
@@ -33,7 +33,7 @@ public class TelephoneUI {
         Scanner sc = new Scanner(System.in);
 
         for (int i = 0; i < contact.getAllTelephones().size(); i++) {
-            System.out.println("Index: |" + i + "| " + contact.getAllTelephones().get(i));
+            System.out.println("ID: |" + i + "| " + contact.getAllTelephones().get(i));
         }
 
 

@@ -21,9 +21,9 @@ public class AddressController {
 
         Address address = new Address(cep, logradouro, numero, estado, cidade);
         if (db.get(index).addAddress(address)) {
-            System.out.println("Endereço Salvo!");
+            System.out.println("ENDEREÇO SALVO");
         } else {
-            System.out.println("Endereço já cadastrado.");
+            System.out.println("ENDEREÇO JÁ CADASTRADO!");
         }
 
     }
