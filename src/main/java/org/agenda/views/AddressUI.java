@@ -1,6 +1,7 @@
 package org.agenda.views;
 
 import org.agenda.database.Database;
+import org.agenda.model.Address;
 import org.agenda.model.Contact;
 
 import java.util.ArrayList;
@@ -38,6 +39,16 @@ public class AddressUI {
 
         return camposAdress;
 
+    }
+
+
+    public static void list(Contact contact){
+
+        System.out.println("------ ENDERECOS ------");
+        for (Address address : contact.getAllAddresses()) {
+            System.out.println("Endereço: " + address.getAddress() + ", " + address.getNumber() + ", " + address.getCep()
+                    + " - " + address.getCity() + " - " + address.getState());
+        }
     }
 
     public static int delete(int index) {

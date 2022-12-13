@@ -1,1 +1,65 @@
-{"contacts":[{"addresses":[],"surname":"LOPESS","name":"BRUNO LOPES","telephones":[]},{"addresses":[],"surname":"SHAUSHAUSHAPDLSDPS","name":"MURILO","telephones":[]},{"addresses":[{"number":"130","address":"RUA TESTE 2","city":"GRU","state":"SP","cep":"99999"}],"surname":"FERREIRA","name":"WASHINGTON","telephones":[{"number":"88888-8888","ddd":"99"}]},{"addresses":[{"number":"A","address":"A","city":"A","state":"A","cep":"A"},{"number":"B","address":"A","city":"A","state":"A","cep":"A"}],"surname":"ARAUJO","name":"RENAN","telephones":[{"number":"9999-9999","ddd":"99"},{"number":"9999-9999","ddd":"11"}]}]}
+{
+  "contacts": [
+    {
+      "addresses": [],
+      "surname": "LOPESS",
+      "name": "BRUNO LOPES",
+      "telephones": []
+    },
+    {
+      "addresses": [],
+      "surname": "SHAUSHAUSHAPDLSDPS",
+      "name": "MURILO",
+      "telephones": []
+    },
+    {
+      "addresses": [
+        {
+          "number": "130",
+          "address": "RUA TESTE 2",
+          "city": "GRU",
+          "state": "SP",
+          "cep": "99999"
+        }
+      ],
+      "surname": "FERREIRA",
+      "name": "WASHINGTON",
+      "telephones": [
+        {
+          "number": "88888-8888",
+          "ddd": "99"
+        }
+      ]
+    },
+    {
+      "addresses": [
+        {
+          "number": "A",
+          "address": "A",
+          "city": "A",
+          "state": "A",
+          "cep": "A"
+        },
+        {
+          "number": "B",
+          "address": "A",
+          "city": "A",
+          "state": "A",
+          "cep": "A"
+        }
+      ],
+      "surname": "ARAUJO",
+      "name": "RENAN",
+      "telephones": [
+        {
+          "number": "9999-9999",
+          "ddd": "99"
+        },
+        {
+          "number": "9999-9999",
+          "ddd": "11"
+        }
+      ]
+    }
+  ]
+}

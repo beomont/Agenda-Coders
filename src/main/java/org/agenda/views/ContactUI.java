@@ -143,25 +143,19 @@ public class ContactUI {
         System.out.println("Sobrenome: " + contact.getSurname());
 
 
-//        for (Telephone telephone : contact.getAllTelephones()) {
-//            System.out.println("DDD: " + telephone.getDdd());
-//            System.out.println("Número: " + telephone.getNumber());
-//        }
-
         int option = MenuCreator.exec(".:: OPÇÔES DE CONTATO ::.", "VOLTAR", "LISTAR ENDERECOS", "LISTAR TELEFONES", "EDITAR CONTATO");
 
-        switch (option){
-            case 0 -> {}
-            case 1 -> {}
-            case 2 -> {}
-            case 3 -> {}
+        switch (option) {
+            case 0 -> {
+            }
+            case 1 -> AddressUI.list(contact);
+            case 2 -> TelephoneUI.list(contact);
+
+            case 3 -> {
+            }
             default -> System.out.println("OPCAO INCORRETA \n");
         }
 
-        for (Address address : contact.getAllAddresses()) {
-            System.out.println("Endereço: " + address.getAddress() + ", " + address.getNumber() + ", " + address.getCep()
-                    + " - " + address.getCity() + " - " + address.getState());
-        }
 
         System.out.println("----------------------");
     }
