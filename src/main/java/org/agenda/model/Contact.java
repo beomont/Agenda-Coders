@@ -12,10 +12,6 @@ public class Contact {
     private List<Address> addresses;
     private List<Telephone> telephones;
 
-    public Contact() {
-
-    }
-
     public Contact(String name, String surname) {
         this.name = name;
         this.surname = surname;
@@ -26,24 +22,7 @@ public class Contact {
 
     public boolean save() {
         Database db = Database.getInstance();
-        List<Contact> contacts = db.getContacts();
-
-        if (contacts.contains(this)) return false;
-
-        contacts.add(this);
-        return true;
-    }
-
-    public void deleteAll() {
-        Database db = Database.getInstance();
-        List<Contact> contacts = db.getContacts();
-        contacts.clear();
-    }
-
-    public void remove(int index) {
-        Database db = Database.getInstance();
-        List<Contact> contacts = db.getContacts();
-        contacts.remove(index);
+        return db.addContact(this);
     }
 
     public String getName() {

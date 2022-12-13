@@ -28,12 +28,12 @@ public class TelephoneUI {
 
     }
 
-    public static int delete(int index){
+    public static int delete(int index) {
         Contact contact = Database.getInstance().getContacts().get(index);
         Scanner sc = new Scanner(System.in);
 
-        for (int i = 0; i < contact.getAllTelephones().size(); i++){
-            System.out.println("Index: |" + i  + "| "+ contact.getAllTelephones().get(i));
+        for (int i = 0; i < contact.getAllTelephones().size(); i++) {
+            System.out.println("Index: |" + i + "| " + contact.getAllTelephones().get(i));
         }
 
 

@@ -20,7 +20,7 @@ public class AddressController {
         String cidade = camposAddress.get(4).toString();
 
         Address address = new Address(cep, logradouro, numero, estado, cidade);
-        if(db.get(index).addAddress(address)) {
+        if (db.get(index).addAddress(address)) {
             System.out.println("Endereço Salvo!");
         } else {
             System.out.println("Endereço já cadastrado.");

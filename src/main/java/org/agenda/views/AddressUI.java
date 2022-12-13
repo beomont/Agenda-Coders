@@ -40,12 +40,12 @@ public class AddressUI {
 
     }
 
-    public static int delete(int index){
+    public static int delete(int index) {
         Contact contact = Database.getInstance().getContacts().get(index);
         Scanner sc = new Scanner(System.in);
 
-        for (int i = 0; i < contact.getAllAddresses().size(); i++){
-            System.out.println("Index: |" + i  + "| "+ contact.getAllAddresses().get(i));
+        for (int i = 0; i < contact.getAllAddresses().size(); i++) {
+            System.out.println("Index: |" + i + "| " + contact.getAllAddresses().get(i));
         }
 
 

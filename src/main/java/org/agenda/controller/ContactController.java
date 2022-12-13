@@ -12,14 +12,12 @@ public class ContactController {
 
     public void list() {
         Database db = Database.getInstance();
-        Contact contact = new Contact();
         ContactUI.list(db.getAll());
     }
 
     public void search(String value) {
         Database db = Database.getInstance();
         if (value != null) {
-            Contact contact = new Contact();
             ContactUI.list(db.searchContact(value));
         } else {
             ContactUI.search();
@@ -40,14 +38,15 @@ public class ContactController {
     }
 
     public void deleteAll() {
-        Contact contact = new Contact();
-        contact.deleteAll();
+        Database db = Database.getInstance();
+        db.deleteAll();
     }
 
     public void remove(Integer index) {
+        Database db = Database.getInstance();
+
         if (index != null) {
-            Contact contact = new Contact();
-            contact.remove(index);
+            db.remove(index);
         } else {
             ContactUI.remove();
         }
@@ -61,7 +60,6 @@ public class ContactController {
         System.out.print("Digite o index que deseja exibir: ");
         index = sc.nextInt();
 
-        Contact contact = new Contact();
         ContactUI.view(db.get(index));
 
         menuEdit(index);

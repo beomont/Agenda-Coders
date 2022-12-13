@@ -19,13 +19,13 @@ public class ContactUI {
         System.out.println("Adicionar novo contato:");
         System.out.print("Nome: ");
         name = sc.nextLine();
-        if(name.isBlank()) {
+        if (name.isBlank()) {
             System.out.println("Nome inválido");
             return;
         }
         System.out.print("Sobrenome: ");
         surname = sc.nextLine();
-        if(surname.isBlank()) {
+        if (surname.isBlank()) {
             System.out.println("Sobrenome inválido");
             return;
         }
@@ -46,7 +46,7 @@ public class ContactUI {
         }
     }
 
-    public static void search(){
+    public static void search() {
         ContactController contactController = new ContactController();
         Scanner sc = new Scanner(System.in);
 
@@ -55,7 +55,7 @@ public class ContactUI {
         contactController.search(term);
     }
 
-    public static void remove(){
+    public static void remove() {
         ContactController contactController = new ContactController();
         Scanner sc = new Scanner(System.in);
         Integer index;
@@ -71,8 +71,7 @@ public class ContactUI {
         System.out.println("Sobrenome: " + contact.getSurname());
 
 
-
-        for (Telephone telephone: contact.getAllTelephones()) {
+        for (Telephone telephone : contact.getAllTelephones()) {
             System.out.println("DDD: " + telephone.getDdd());
             System.out.println("Número: " + telephone.getNumber());
         }

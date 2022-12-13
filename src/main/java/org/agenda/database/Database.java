@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
-    Path dbPath;
-    List<Contact> contacts;
+    private Path dbPath;
+    private List<Contact> contacts;
     private static Database instance;
 
     private Database() {
@@ -79,17 +79,14 @@ public class Database {
     }
 
     public List<Contact> getAll() {
-        Database db = Database.getInstance();
-        return db.getContacts();
+        return contacts;
     }
 
     public Contact get(int index) {
-        Database db = Database.getInstance();
-        return db.getContacts().get(index);
+        return contacts.get(index);
     }
 
     public List<Contact> searchContact(String value) {
-        List<Contact> contacts = this.getAll();
         List<Contact> matchContacts = new ArrayList<>();
 
         for (Contact contact : contacts) {
@@ -103,6 +100,21 @@ public class Database {
 
     public List<Contact> getContacts() {
         return contacts;
+    }
+
+    public boolean addContact(Contact contact) {
+        if (contacts.contains(contact)) return false;
+
+        contacts.add(contact);
+        return true;
+    }
+
+    public void deleteAll() {
+        contacts.clear();
+    }
+
+    public void remove(int index) {
+        contacts.remove(index);
     }
 
     public void close() throws IOException {

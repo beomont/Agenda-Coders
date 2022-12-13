@@ -18,7 +18,7 @@ public class TelephoneController {
 
         Telephone telephone = new Telephone(ddd, numero);
 
-        if(db.get(index).addTelephone(telephone)){
+        if (db.get(index).addTelephone(telephone)) {
             System.out.println("Telefone Salvo!");
         } else {
             System.out.println("Telefone já cadastrado.");
