@@ -52,8 +52,10 @@ public class TelephoneUI {
 
                 for (int i = start; i < start + ammount; i++) {
                     if (i == contact.getAllTelephones().size()) break;
+                    Telephone phoneTemp = contact.getAllTelephones().get(i);
+
                     System.out.println("ID: " + i);
-                    System.out.println("NUMERO: " + contact.getAllTelephones().get(i).getDdd() + " " + contact.getAllTelephones().get(i).getNumber());
+                    System.out.println("NUMERO: " + phoneTemp.getDdd() + " " + phoneTemp.getNumber());
                     System.out.println("----------------------");
                 }
 
@@ -110,12 +112,13 @@ public class TelephoneUI {
     }
 
     public static int delete(Contact contact) throws Exception {
-        System.out.println("------ TELEFONES ------");
+        System.out.println("------- TELEFONES -------");
 
         for (int i = 0; i < contact.getAllTelephones().size(); i++) {
             Telephone phoneTemp = contact.getAllTelephones().get(i);
             System.out.println(" ID: " + i);
             System.out.println(" NUMERO: (" + phoneTemp.getDdd() + ") " + phoneTemp.getNumber());
+            System.out.println("----------------------");
         }
 
         int indexEscolhido = Input.integer("DIGITE O ID DO TELEFONE QUE DESEJA REMOVER: ");

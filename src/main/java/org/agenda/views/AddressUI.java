@@ -134,7 +134,7 @@ public class AddressUI {
     }
 
     public static int delete(Contact contact) throws Exception {
-        System.out.println("------ TELEFONES ------");
+        System.out.println("------- TELEFONES -------");
 
         for (int i = 0; i < contact.getAllAddresses().size(); i++) {
             Address addressTemp = contact.getAllAddresses().get(i);
@@ -146,6 +146,7 @@ public class AddressUI {
                     + addressTemp.getCity() + " - "
                     + addressTemp.getState()
             );
+            System.out.println("----------------------");
         }
 
 
