@@ -34,16 +34,18 @@ public class ContactUI {
 
     }
 
+
     public static void list(List<Contact> contacts) {
         int index = 0;
-        for (Contact contact : contacts) {
-            System.out.println("-----CONTATO-----");
-            System.out.println("Index: " + index);
-            System.out.println("Nome: " + contact.getName());
-            System.out.println("Sobrenome: " + contact.getSurname());
+        
+        System.out.println("------ CONTATOS ------");
+        for (Contact contact : contacts) {            
+            System.out.println(" ID: " + index);
+            System.out.println(" Nome: " + contact.getName() + " " + contact.getSurname());
             System.out.println("----------------------");
             index++;
         }
+        System.out.println("");
     }
 
     public static void search() {
@@ -67,13 +69,11 @@ public class ContactUI {
 
     public static void view(Contact contact) {
         System.out.println("-----CONTATO-----");
-        System.out.println("Nome: " + contact.getName());
-        System.out.println("Sobrenome: " + contact.getSurname());
+        System.out.println("Nome: " + contact.getName() + " " + contact.getSurname());
 
 
         for (Telephone telephone : contact.getAllTelephones()) {
-            System.out.println("DDD: " + telephone.getDdd());
-            System.out.println("Número: " + telephone.getNumber());
+            System.out.println("Número: (" + telephone.getDdd() + ") " +  telephone.getNumber());
         }
 
         for (Address address : contact.getAllAddresses()) {
@@ -82,7 +82,7 @@ public class ContactUI {
         }
 
         System.out.println("----------------------");
+        System.out.println("");
     }
-
 
 }
