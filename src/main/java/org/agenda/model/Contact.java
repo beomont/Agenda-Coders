@@ -20,11 +20,6 @@ public class Contact {
         telephones = new ArrayList<>();
     }
 
-    public boolean save() {
-        Database db = Database.getInstance();
-        return db.addContact(this);
-    }
-
     public String getName() {
         return name;
     }

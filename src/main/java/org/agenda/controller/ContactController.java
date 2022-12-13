@@ -30,7 +30,9 @@ public class ContactController {
 
     public void save(String name, String surname) {
         Contact contact = new Contact(name, surname);
-        if (contact.save()) {
+        Database db = Database.getInstance();
+
+        if (db.addContact(contact)) {
             System.out.println("Contato salvo");
         } else {
             System.out.println("Contato duplicado!");
