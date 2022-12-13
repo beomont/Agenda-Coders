@@ -20,8 +20,16 @@ public class ContactUI {
         System.out.println("Adicionar novo contato:");
         System.out.print("Nome: ");
         name = sc.nextLine();
+        if(name.isBlank()) {
+            System.out.println("Nome inválido");
+            return;
+        }
         System.out.print("Sobrenome: ");
         surname = sc.nextLine();
+        if(surname.isBlank()) {
+            System.out.println("Sobrenome inválido");
+            return;
+        }
 
         contactController.save(name, surname);
 
@@ -42,10 +50,9 @@ public class ContactUI {
     public static void search(){
         ContactController contactController = new ContactController();
         Scanner sc = new Scanner(System.in);
-        String term;
 
         System.out.print("Digite o termo para buscar o contato: ");
-        term = sc.nextLine();
+        String term = sc.nextLine().trim().toUpperCase();
         contactController.search(term);
     }
 

@@ -17,6 +17,7 @@ public class Home {
             option = sc.nextInt();
             switch (option) {
                 case 0 -> {
+                    System.out.println("Aplicação encerrada!");
                     executing = false;
                 }
                 case 1 -> {
