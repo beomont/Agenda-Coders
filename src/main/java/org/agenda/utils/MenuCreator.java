@@ -2,10 +2,8 @@ package org.agenda.utils;
 
 public class MenuCreator {
 
-    public static int exec(String Message, String... options){
+    public static int exec(String Message, String... options) {
         int chooseYourDestiny = 0;
-        int tentadas = 0;
-
         boolean isInvalid;
 
         do {
@@ -16,18 +14,12 @@ public class MenuCreator {
                     System.out.printf("[%d] - %s\n", i, options[i]);
                 }
 
-                System.out.print("Escolha uma das opções: ");
-                chooseYourDestiny = Input.integer();
+                chooseYourDestiny = Input.integer("Escolha uma das opções: ");
 
                 System.out.println("");
 
             } catch (Exception ex) {
-                tentadas += 1;
-                System.out.printf(ex.getMessage() + "\n\n");
-                if (tentadas < 3) {
-                    isInvalid = true;
-                    continue;
-                }
+                System.out.println(ex.getMessage());
                 break;
             }
 
