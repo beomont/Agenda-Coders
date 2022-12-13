@@ -1,9 +1,7 @@
 package org.agenda.views;
 
 import org.agenda.controller.ContactController;
-import org.agenda.model.Address;
 import org.agenda.model.Contact;
-import org.agenda.model.Telephone;
 import org.agenda.utils.Input;
 import org.agenda.utils.MenuCreator;
 
@@ -103,27 +101,43 @@ public class ContactUI {
                 boolean better = true;
 
                 while (better) {
-                    switch (MenuCreator.exec(".:: NAVEGAÇÂO ::.", "SAIR", "PAGINA SEGUINTE", "PAGINA ANTERIOR", "EXIBIR CONTATO")) {
-                        case 0 -> {
-                            better = false;
-                            working = false;
-                            option = "VOLTAR";
+                    if(contacts.size() == 0){
+                        switch (MenuCreator.exec(".:: NAVEGAÇÂO ::.", "SAIR", "ADICIONAR CONTATO")) {
+                            case 0 -> {
+                                better = false;
+                                working = false;
+                                option = "VOLTAR";
+                            }
+                            case 1 -> {
+                                add();
+                                better = false;
+                            }
+                            default -> System.out.println(" OPÇÂO INVÁLIDA\n");
                         }
-                        case 1 -> {
-                            start = start + ammount;
-                            better = false;
+                    }else{
+                        switch (MenuCreator.exec(".:: NAVEGAÇÂO ::.", "SAIR", "PAGINA SEGUINTE", "PAGINA ANTERIOR", "EXIBIR CONTATO")) {
+                            case 0 -> {
+                                better = false;
+                                working = false;
+                                option = "VOLTAR";
+                            }
+                            case 1 -> {
+                                start = start + ammount;
+                                better = false;
+                            }
+                            case 2 -> {
+                                start = start - ammount;
+                                better = false;
+                            }
+                            case 3 -> {
+                                better = false;
+                                working = false;
+                                option = "EDITAR";
+                            }
+                            default -> System.out.println(" OPÇÂO INVÁLIDA\n");
                         }
-                        case 2 -> {
-                            start = start - ammount;
-                            better = false;
-                        }
-                        case 3 -> {
-                            better = false;
-                            working = false;
-                            option = "EDITAR";
-                        }
-                        default -> System.out.println(" OPÇÂO INVÁLIDA\n");
                     }
+
                 }
             } catch (Exception ex) {
                 System.out.println(ex.getMessage() + " VOLTANDO AO MENU PRINCIPAL...");
