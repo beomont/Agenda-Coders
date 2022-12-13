@@ -5,14 +5,20 @@ import org.agenda.model.Contact;
 import org.agenda.views.ContactUI;
 
 import javax.xml.crypto.Data;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class ContactController {
 
+    public String paginatedList() {
+        Database db = Database.getInstance();
+        return ContactUI.paginatedList(db.getContacts());
+    }
+
     public void list() {
         Database db = Database.getInstance();
-        ContactUI.list(db.getAll());
+        ContactUI.list(db.getContacts());
     }
 
     public void search(String value) {
@@ -56,15 +62,20 @@ public class ContactController {
 
     public void view() {
         Database db = Database.getInstance();
-        Scanner sc = new Scanner(System.in);
-        int index;
-        list();
-        System.out.print("Digite o index que deseja exibir: ");
-        index = sc.nextInt();
+        String option = paginatedList();
 
-        ContactUI.view(db.get(index));
+        if (option.equals("EDITAR")) {
+            System.out.println(option);
+            try {
+                int index = ContactUI.getIndex();
+                ContactUI.view(db.get(index));
+                menuEdit(index);
 
-        menuEdit(index);
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage() + "VOLTANDO AO MENU PRINCIPAL ...");
+            }
+        }
+
 
     }
 

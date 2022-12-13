@@ -4,6 +4,8 @@ import org.agenda.controller.ContactController;
 import org.agenda.model.Address;
 import org.agenda.model.Contact;
 import org.agenda.model.Telephone;
+import org.agenda.utils.Input;
+import org.agenda.utils.MenuCreator;
 
 import java.util.List;
 import java.util.Scanner;
@@ -44,6 +46,76 @@ public class ContactUI {
             System.out.println("----------------------");
             index++;
         }
+    }
+
+    public static int getIndex() throws Exception {
+        int index = 0;
+
+        index = Input.integer("Digite o ID que deseja exibir: ");
+
+        return index;
+    }
+
+    public static String paginatedList(List<Contact> contacts) {
+        boolean working = true;
+        int ammount = 0;
+        int start = 0;
+        String option = "";
+
+        while (working) {
+            try {
+                if (ammount == 0) {
+                    ammount = Input.integer("Informe a Quantidade de contatos por página: ");
+                    System.out.println("");
+                }
+
+                if (start < 0 || start > contacts.size()) start = 0;
+                if (ammount < 0) ammount = 0;
+                if (ammount > contacts.size()) ammount = contacts.size() - 1;
+                if (start + ammount > contacts.size()) start = contacts.size() - ammount;
+
+                System.out.println("------ CONTATOS ------");
+
+                for (int i = start; i < start + ammount; i++) {
+                    if (i == contacts.size()) break;
+                    System.out.println("ID: " + i);
+                    System.out.println("NOME: " + contacts.get(i).getName() + " " + contacts.get(i).getSurname());
+                    System.out.println("----------------------");
+                }
+                System.out.println("");
+
+                boolean better = true;
+
+                while (better) {
+                    switch (MenuCreator.exec(".:: NAVEGAÇÂO ::.", "SAIR", "PAGINA SEGUINTE", "PAGINA ANTERIOR", "EXIBIR CONTATO")) {
+                        case 0 -> {
+                            better = false;
+                            working = false;
+                            option = "VOLTAR";
+                        }
+                        case 1 -> {
+                            start = start + ammount;
+                            better = false;
+                        }
+                        case 2 -> {
+                            start = start - ammount;
+                            better = false;
+                        }
+                        case 3 -> {
+                            better = false;
+                            working = false;
+                            option = "EDITAR";
+                        }
+                        default -> System.out.println(" OPÇÂO INVÁLIDA\n");
+                    }
+                }
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage() + " VOLTANDO AO MENU PRINCIPAL...");
+            }
+
+        }
+        return option;
+
     }
 
     public static void search() {
