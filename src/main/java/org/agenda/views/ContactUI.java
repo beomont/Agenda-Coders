@@ -5,7 +5,6 @@ import org.agenda.model.Address;
 import org.agenda.model.Contact;
 import org.agenda.model.Telephone;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 

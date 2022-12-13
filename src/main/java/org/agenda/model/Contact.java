@@ -24,30 +24,6 @@ public class Contact {
         telephones = new ArrayList<>();
     }
 
-
-    public List<Contact> getAll() {
-        Database db = Database.getInstance();
-        return db.getContacts();
-    }
-
-    public Contact get(int index) {
-        Database db = Database.getInstance();
-        return db.getContacts().get(index);
-    }
-
-    public List<Contact> searchContact(String value) {
-        List<Contact> contacts = this.getAll();
-        List<Contact> matchContacts = new ArrayList<>();
-
-        for (Contact contact : contacts) {
-            String fullName = contact.getName() + " " + contact.getSurname();
-            if (fullName.contains(value)) {
-                matchContacts.add(contact);
-            }
-        }
-        return matchContacts;
-    }
-
     public boolean save() {
         Database db = Database.getInstance();
         List<Contact> contacts = db.getContacts();

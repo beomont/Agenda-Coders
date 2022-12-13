@@ -1,24 +1,26 @@
 package org.agenda.controller;
 
-import org.agenda.model.Address;
+import org.agenda.database.Database;
 import org.agenda.model.Contact;
-import org.agenda.views.AddressUI;
 import org.agenda.views.ContactUI;
 
+import javax.xml.crypto.Data;
 import java.util.List;
 import java.util.Scanner;
 
 public class ContactController {
 
     public void list() {
+        Database db = Database.getInstance();
         Contact contact = new Contact();
-        ContactUI.list(contact.getAll());
+        ContactUI.list(db.getAll());
     }
 
     public void search(String value) {
+        Database db = Database.getInstance();
         if (value != null) {
             Contact contact = new Contact();
-            ContactUI.list(contact.searchContact(value));
+            ContactUI.list(db.searchContact(value));
         } else {
             ContactUI.search();
         }
@@ -52,14 +54,15 @@ public class ContactController {
     }
 
     public void view() {
-        list();
+        Database db = Database.getInstance();
         Scanner sc = new Scanner(System.in);
         int index;
+        list();
         System.out.print("Digite o index que deseja exibir: ");
         index = sc.nextInt();
 
         Contact contact = new Contact();
-        ContactUI.view(contact.get(index));
+        ContactUI.view(db.get(index));
 
         menuEdit(index);
 

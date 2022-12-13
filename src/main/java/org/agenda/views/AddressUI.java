@@ -1,9 +1,6 @@
 package org.agenda.views;
 
-import org.agenda.controller.AddressController;
-import org.agenda.controller.ContactController;
 import org.agenda.database.Database;
-import org.agenda.model.Address;
 import org.agenda.model.Contact;
 
 import java.util.ArrayList;
