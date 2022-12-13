@@ -110,7 +110,7 @@ public class ContactController {
 					System.out.println("VOLTANDO AO MENU PRINCIPAL...");
 					break;
 				default:
-					System.out.printf("Opção (%d) é inválida!%n%n", editOptions);
+					System.out.printf("OPÇÃO (%d) É INVÁLIDA!%n%n", editOptions);
 				
 				}
 			}   
