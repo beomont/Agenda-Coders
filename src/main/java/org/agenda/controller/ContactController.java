@@ -1,12 +1,10 @@
 package org.agenda.controller;
 
+import java.util.Scanner;
+
 import org.agenda.database.Database;
 import org.agenda.model.Contact;
 import org.agenda.views.ContactUI;
-
-import javax.xml.crypto.Data;
-import java.util.List;
-import java.util.Scanner;
 
 public class ContactController {
 
@@ -33,9 +31,17 @@ public class ContactController {
         Database db = Database.getInstance();
 
         if (db.addContact(contact)) {
-            System.out.println("Contato salvo");
+        	System.out.println("");
+        	System.out.println("-----------------");
+            System.out.println("| Contato salvo |");
+            System.out.println("-----------------");
+            System.out.println("");
         } else {
-            System.out.println("Contato duplicado!");
+        	System.out.println("");
+        	System.out.println("----------------------");
+            System.out.println("| Contato duplicado! |");
+            System.out.println("----------------------");
+            System.out.println("");
         }
     }
 
@@ -59,9 +65,11 @@ public class ContactController {
         Scanner sc = new Scanner(System.in);
         int index;
         list();
-        System.out.print("Digite o index que deseja exibir: ");
+        System.out.print("Digite o ID que deseja exibir: ");
         index = sc.nextInt();
-
+        
+        System.out.println("");
+        
         ContactUI.view(db.get(index));
 
         menuEdit(index);
