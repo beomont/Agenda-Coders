@@ -64,7 +64,7 @@ public class AddressUI {
                 if (start + ammount > contact.getAllAddresses().size())
                     start = contact.getAllAddresses().size() - ammount;
 
-                System.out.println("------ ENDEREÇOS ------");
+                System.out.println("----------- ENDEREÇOS -----------");
                 if (contact.getAllAddresses().size() == 0) System.out.println("NENHUM ENDEREÇO ENCONTRADO");
 
                 for (int i = start; i < start + ammount; i++) {
@@ -78,7 +78,7 @@ public class AddressUI {
                             + addressTemp.getCity() + " - "
                             + addressTemp.getState()
                     );
-                    System.out.println("----------------------");
+                    System.out.println("---------------------------------");
                 }
 
                 System.out.println("");
@@ -134,7 +134,7 @@ public class AddressUI {
     }
 
     public static int delete(Contact contact) throws Exception {
-        System.out.println("------- TELEFONES -------");
+        System.out.println("------------ ENDEREÇOS ------------");
 
         for (int i = 0; i < contact.getAllAddresses().size(); i++) {
             Address addressTemp = contact.getAllAddresses().get(i);
@@ -146,7 +146,8 @@ public class AddressUI {
                     + addressTemp.getCity() + " - "
                     + addressTemp.getState()
             );
-            System.out.println("----------------------");
+            System.out.println("--------------------------------");
+            System.out.println("");
         }
 
 

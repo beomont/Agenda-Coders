@@ -61,21 +61,21 @@ public class ContactController {
     }
 
     public void view() {
-        Database db = Database.getInstance();
         String option = paginatedList();
-
         if (option.equals("EDITAR")) {
-            System.out.println(option);
-            try {
-                int index = ContactUI.getIndex();
-                ContactUI.view(db.get(index));
-
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage() + "VOLTANDO AO MENU PRINCIPAL ...");
-            }
+            viewContactInfo();
         }
+    }
 
+    public void viewContactInfo() {
+        Database db = Database.getInstance();
+        try {
+            int index = ContactUI.getIndex();
+            ContactUI.view(db.get(index));
 
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage() + "VOLTANDO AO MENU PRINCIPAL ...");
+        }
     }
 
     public void menuEdit(int index) {

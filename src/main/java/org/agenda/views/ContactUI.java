@@ -38,21 +38,37 @@ public class ContactUI {
 
     public static void list(List<Contact> contacts) {
         int index = 0;
-        for (Contact contact : contacts) {
-            System.out.println("-----CONTATO-----");
-            System.out.println("Index: " + index);
-            System.out.println("Nome: " + contact.getName());
-            System.out.println("Sobrenome: " + contact.getSurname());
-            System.out.println("----------------------");
-            index++;
-        }
+
+       try {
+           if (contacts.size() > 1){
+
+               System.out.println("");
+               for (Contact contact : contacts) {
+                   System.out.println("-------- CONTATO -------");
+                   System.out.println("ID: " + index);
+                   System.out.println("Nome: " + contact.getName());
+                   System.out.println("Sobrenome: " + contact.getSurname());
+                   System.out.println("------------------------");
+                   index++;
+               }
+
+               int indexOption = getIndex();
+               ContactUI.view(contacts.get(indexOption));
+           }else{
+               ContactUI.view(contacts.get(0));
+           }
+       }catch (Exception ex){
+           System.out.println("Opção inválida");
+       }
+
+
     }
 
     public static int getIndex() throws Exception {
         int index = 0;
 
         index = Input.integer("Digite o ID que deseja exibir: ");
-
+        System.out.println("");
         return index;
     }
 
@@ -141,9 +157,11 @@ public class ContactUI {
         boolean working = true;
 
         while (working) {
-            System.out.println("-----CONTATO-----");
-            System.out.println("Nome: " + contact.getName());
-            System.out.println("Sobrenome: " + contact.getSurname());
+            System.out.println("------- CONTATO -------");
+            System.out.println(" Nome: " + contact.getName());
+            System.out.println(" Sobrenome: " + contact.getSurname());
+            System.out.println("-----------------------");
+            System.out.println("");
 
             int option = MenuCreator.exec(".:: OPÇÔES DE CONTATO ::.", "VOLTAR", "LISTAR ENDERECOS", "LISTAR TELEFONES");
 
@@ -157,9 +175,6 @@ public class ContactUI {
                 default -> System.out.println("OPCAO INCORRETA \n");
             }
         }
-
-
-        System.out.println("----------------------");
     }
 
 
