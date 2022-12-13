@@ -103,10 +103,10 @@ public class ContactController {
 
                     switch (choose) {
                         case "1":
-                            TelephoneController.create(index);
+//                            TelephoneController.create(index);
                             break;
                         case "2":
-                            TelephoneController.remove(index);
+//                            TelephoneController.remove(index);
                             break;
                         case "3":
                             AddressController.create(index);

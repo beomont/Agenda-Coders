@@ -9,8 +9,7 @@ import java.util.List;
 
 public class TelephoneController {
 
-    public static void create(int index) {
-        Database db = Database.getInstance();
+    public static void create(Contact contact) throws Exception {
         List<String> camposTelephone = TelephoneUI.add();
 
         String ddd = camposTelephone.get(0).toString();
@@ -18,7 +17,7 @@ public class TelephoneController {
 
         Telephone telephone = new Telephone(ddd, numero);
 
-        if (db.get(index).addTelephone(telephone)) {
+        if (contact.addTelephone(telephone)) {
             System.out.println("Telefone Salvo!");
         } else {
             System.out.println("Telefone já cadastrado.");
@@ -26,9 +25,8 @@ public class TelephoneController {
 
     }
 
-    public static void remove(int index) {
-        Contact contact = Database.getInstance().getContacts().get(index);
-        contact.removeTelephone(TelephoneUI.delete(index));
+    public static void remove(Contact contact) throws Exception {
+        contact.removeTelephone(TelephoneUI.delete(contact));
     }
 
 }

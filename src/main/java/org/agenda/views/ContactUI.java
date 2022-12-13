@@ -71,7 +71,7 @@ public class ContactUI {
 
                 if (start < 0 || start > contacts.size()) start = 0;
                 if (ammount < 0) ammount = 0;
-                if (ammount > contacts.size()) ammount = contacts.size() - 1;
+                if (ammount > contacts.size()) ammount = contacts.size();
                 if (start + ammount > contacts.size()) start = contacts.size() - ammount;
 
                 System.out.println("------ CONTATOS ------");
