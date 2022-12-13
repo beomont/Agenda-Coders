@@ -69,7 +69,6 @@ public class ContactController {
             try {
                 int index = ContactUI.getIndex();
                 ContactUI.view(db.get(index));
-                menuEdit(index);
 
             } catch (Exception ex) {
                 System.out.println(ex.getMessage() + "VOLTANDO AO MENU PRINCIPAL ...");

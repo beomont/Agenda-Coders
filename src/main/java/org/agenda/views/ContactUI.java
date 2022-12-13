@@ -138,22 +138,27 @@ public class ContactUI {
     }
 
     public static void view(Contact contact) {
-        System.out.println("-----CONTATO-----");
-        System.out.println("Nome: " + contact.getName());
-        System.out.println("Sobrenome: " + contact.getSurname());
+        boolean working = true;
+
+        while(working){
+            System.out.println("-----CONTATO-----");
+            System.out.println("Nome: " + contact.getName());
+            System.out.println("Sobrenome: " + contact.getSurname());
 
 
-        int option = MenuCreator.exec(".:: OPÇÔES DE CONTATO ::.", "VOLTAR", "LISTAR ENDERECOS", "LISTAR TELEFONES", "EDITAR CONTATO");
+            int option = MenuCreator.exec(".:: OPÇÔES DE CONTATO ::.", "VOLTAR", "LISTAR ENDERECOS", "LISTAR TELEFONES", "EDITAR CONTATO");
 
-        switch (option) {
-            case 0 -> {
+            switch (option) {
+                case 0 -> {
+                    working = false;
+                }
+                case 1 -> AddressUI.list(contact);
+                case 2 -> TelephoneUI.list(contact);
+
+                case 3 -> {
+                }
+                default -> System.out.println("OPCAO INCORRETA \n");
             }
-            case 1 -> AddressUI.list(contact);
-            case 2 -> TelephoneUI.list(contact);
-
-            case 3 -> {
-            }
-            default -> System.out.println("OPCAO INCORRETA \n");
         }
 
 
