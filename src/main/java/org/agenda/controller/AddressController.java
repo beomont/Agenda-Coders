@@ -20,10 +20,18 @@ public class AddressController {
         Address address = new Address(cep, logradouro.toUpperCase(), numero, estado.toUpperCase(), cidade.toUpperCase());
 
         if (contact.addAddress(address)) {
-            System.out.println("ENDEREÇO SALVO!\n");
+            System.out.println("");
+            System.out.println("-----------------");
+            System.out.println("| ENDEREÇO SALVO |");
+            System.out.println("-----------------");
+            System.out.println("");
 
         } else {
-            System.out.println("ENDEREÇO JÁ CADASTRADO!\n");
+            System.out.println("");
+            System.out.println("-----------------");
+            System.out.println("| ENDEREÇO JÁ CADASTRADO |");
+            System.out.println("-----------------");
+            System.out.println("");
         }
 
     }

@@ -77,7 +77,7 @@ public class ContactController {
             ContactUI.view(db.get(index));
 
         } catch (Exception ex) {
-            System.out.println(ex.getMessage() + "VOLTANDO AO MENU PRINCIPAL ...");
+            System.out.println(ex.getMessage() + "VOLTANDO AO MENU PRINCIPAL ...\n");
         }
     }
 }

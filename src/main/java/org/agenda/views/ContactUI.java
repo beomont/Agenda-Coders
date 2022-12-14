@@ -24,8 +24,8 @@ public class ContactUI {
             contactController.save(name, surname);
 
         } catch (Exception ex) {
-            System.out.println("PARÂMETROS INCORRETOS!");
-            System.out.println("VOLTANDO PARA O MENU PRINCIPAL...");
+            System.out.println(ex.getMessage());
+            System.out.println("voltando...\n");
         }
     }
 
@@ -40,7 +40,7 @@ public class ContactUI {
 
             try {
 
-                if(contacts.size() == 0){
+                if (contacts.size() == 0) {
                     System.out.println("NENHUM CONTATO ENCONTRADO PARA O TERMO INFORMADO\n");
                     break;
                 }
@@ -55,17 +55,19 @@ public class ContactUI {
                         System.out.println("------------------------");
                         index++;
                     }
+                    System.out.println("");
 
                     int indexOption = getIndex();
                     if (indexOption > contacts.size()) {
-                        System.out.println("OPÇÃO INVÁLIDA\n");
+                        System.out.println("-> Opção inválida\n");
                         tentativas++;
                         working = true;
                         continue;
                     }
 
                     if (tentativas > 3) {
-                        System.out.println("MULTIPLAS TENTATIVAS INVÁLIDAS\n");
+                        System.out.println("-> Número de tentativas excedidas");
+                        System.out.println("voltando...\n");
                         break;
                     }
 
@@ -77,14 +79,8 @@ public class ContactUI {
                 }
 
             } catch (Exception ex) {
-                System.out.println("OPÇÃO INVÁLIDA\n");
-                tentativas++;
-                working = true;
-
-                if (tentativas > 3) {
-                    System.out.println("MULTIPLAS TENTATIVAS INVÁLIDAS\n");
-                    break;
-                }
+                System.out.println(ex.getMessage()+ "\n");
+                break;
             }
 
         } while (working);
@@ -93,7 +89,7 @@ public class ContactUI {
     public static int getIndex() throws Exception {
         int index = 0;
 
-        index = Input.integer("Digite o ID que deseja exibir: ");
+        index = Input.integer("DIGITE O ID QUE DESEJA EXIBIR: ");
         System.out.println("");
         return index;
     }
@@ -190,7 +186,7 @@ public class ContactUI {
         while (working) {
             System.out.println("------ CONTATOS ------");
 
-            if(contacts.size() == 0) {
+            if (contacts.size() == 0) {
                 System.out.println("NENHUM CONTATO CADASTRADO NA AGENDA");
                 System.out.println("voltando...\n");
                 break;
@@ -208,11 +204,11 @@ public class ContactUI {
                 contactController.remove(index);
                 break;
             }
-            System.out.println("OPÇÃO INVÁLIDA\n");
+            System.out.println("-> Opção inválida\n");
             tentativas++;
 
             if (tentativas > 3) {
-                throw new Exception("MULTIPLAS TENTATIVAS INCORRETAS");
+                throw new Exception("-> Multiplas tentativas incorretas\n");
             }
         }
 
@@ -224,8 +220,8 @@ public class ContactUI {
 
         while (working) {
             System.out.println("------- CONTATO -------");
-            System.out.println(" Nome: " + contact.getName());
-            System.out.println(" Sobrenome: " + contact.getSurname());
+            System.out.println(" NOME: " + contact.getName());
+            System.out.println(" SOBRENOME: " + contact.getSurname());
             System.out.println("-----------------------");
             System.out.println("");
 
@@ -238,7 +234,7 @@ public class ContactUI {
                 case 1 -> AddressUI.list(contact);
                 case 2 -> TelephoneUI.list(contact);
 
-                default -> System.out.println("OPCAO INCORRETA \n");
+                default -> System.out.println("-> Opção inválida \n");
             }
         }
     }

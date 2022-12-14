@@ -85,7 +85,7 @@ public class TelephoneUI {
                             TelephoneController.remove(contact);
                         }
 
-                        default -> System.out.println("OPÇÂO INVÁLIDA\n");
+                        default -> System.out.println("-> Opção inválida\n");
                     }
                 } else {
                     option = MenuCreator.exec("OPÇÔES DE TELEFONE:", "VOLTAR", "ADICIONAR TELEFONE", "REMOVER TELEFONE");
@@ -100,14 +100,15 @@ public class TelephoneUI {
                         case 2 -> {
                             TelephoneController.remove(contact);
                         }
-                        default -> System.out.println("OPÇÂO INVÁLIDA\n");
+                        default -> System.out.println("-> Opção inválida\n");
                     }
 
                 }
 
                 ammount = originalAmmount;
             } catch (Exception ex) {
-                System.out.println(ex.getMessage() + " VOLTANDO AO MENU PRINCIPAL...");
+                System.out.println(ex.getMessage());
+                System.out.println("voltando...\n");
             }
         }
     }
@@ -133,13 +134,13 @@ public class TelephoneUI {
             System.out.println("");
 
             if (index >= contact.getAllTelephones().size()) {
-                System.out.println("OPÇÂO INVÀLIDA\n");
+                System.out.println("-> Opção inválida\n");
                 tentativas++;
                 continue;
             }
 
             if (tentativas > 3) {
-                throw new Exception("MULTIPLAS TENTATIVAS INCORRETAS");
+                throw new Exception("-> Multiplas tentativas inválidas\n");
             }
            break;
         }

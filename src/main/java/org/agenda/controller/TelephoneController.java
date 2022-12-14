@@ -17,10 +17,18 @@ public class TelephoneController {
         Telephone telephone = new Telephone(ddd, numero);
 
         if (contact.addTelephone(telephone)) {
-            System.out.println("TELEFONE SALVO\n");
+            System.out.println("");
+            System.out.println("-----------------");
+            System.out.println("| TELEFONE SALVO |");
+            System.out.println("-----------------");
+            System.out.println("");
 
         } else {
-            System.out.println("TELEFONE JÁ CADASTRADO!\n");
+            System.out.println("");
+            System.out.println("-----------------");
+            System.out.println("| TELEFONE JÁ CADASTRADO |");
+            System.out.println("-----------------");
+            System.out.println("");
         }
 
     }

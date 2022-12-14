@@ -49,7 +49,7 @@ public class AddressUI {
             try {
 
                 if (ammount == 0) {
-                    ammount = Input.integer("Informe a Quantidade de endereços por página: ");
+                    ammount = Input.integer("QUANTIDADE DE ENDEREÇOS POR PÁGINA: ");
                     originalAmmount = ammount;
                     System.out.println("");
                 }
@@ -102,7 +102,7 @@ public class AddressUI {
                             AddressController.remove(contact);
                         }
 
-                        default -> System.out.println("OPÇÂO INVÁLIDA\n");
+                        default -> System.out.println("-> Opção inválida\n");
                     }
                 } else {
                     option = MenuCreator.exec("OPÇÔES DE ENDEREÇO:", "VOLTAR", "ADICIONAR ENDEREÇO", "REMOVER ENDEREÇO");
@@ -117,14 +117,15 @@ public class AddressUI {
                         case 2 -> {
                             AddressController.remove(contact);
                         }
-                        default -> System.out.println("OPÇÂO INVÁLIDA\n");
+                        default -> System.out.println("-> Opção inválida\n");
                     }
 
                 }
                 option = 0;
                 ammount = originalAmmount;
             } catch (Exception ex) {
-                System.out.println(ex.getMessage() + " VOLTANDO AO MENU PRINCIPAL...");
+                System.out.println(ex.getMessage());
+                System.out.println("voltando...\n");
             }
         }
     }
@@ -156,13 +157,13 @@ public class AddressUI {
             System.out.println("");
 
             if (index >= contact.getAllAddresses().size()) {
-                System.out.println("OPÇÂO INVÀLIDA\n");
+                System.out.println("-> Opção inválida\n");
                 tentativas++;
                 continue;
             }
 
             if (tentativas > 3) {
-                throw new Exception("MULTIPLAS TENTATIVAS INCORRETAS");
+                throw new Exception("-> Multiplas tentativas inválidas");
             }
             break;
         }

@@ -19,12 +19,12 @@ public class Input {
 
             }catch (Exception ex) {
                 tentadas += 1;
-                System.out.printf("Opção inválida" + "\n\n");
+                System.out.printf("-> Opção inválida" + "\n\n");
                 if (tentadas < 3) {
                     isInvalid = true;
                     continue;
                 }
-                throw new Exception("Multiplas tentativas incorretas");
+                throw new Exception("-> Multiplas tentativas incorretas");
             }
 
         }while (isInvalid);
@@ -54,13 +54,13 @@ public class Input {
             } catch (Exception ex) {
                 tentadas += 1;
 
-                System.out.printf("MSG: %s, NÃO PODE SER NULO\n", ex.getMessage());
+                System.out.printf("-> % não pode ser nulo\n", ex.getMessage());
                 if (tentadas < tentativas) {
                     isInvalid = true;
                     continue;
                 }
 
-                throw new Exception("NÚMERO DE TENTATIVAS EXCEDIDAS");
+                throw new Exception("-> Número de tentativas excedidas");
             }
 
         } while (isInvalid);
