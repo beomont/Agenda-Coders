@@ -4,6 +4,8 @@ import org.agenda.controller.ContactController;
 import org.agenda.model.Contact;
 import org.agenda.utils.Input;
 import org.agenda.utils.MenuCreator;
+import org.agenda.model.Telephone;
+
 
 import java.util.List;
 import java.util.Scanner;
@@ -16,23 +18,18 @@ public class ContactUI {
         String name;
         String surname;
 
-        System.out.println("Adicionar novo contato:");
-        System.out.print("Nome: ");
-        name = sc.nextLine();
-        if (name.isBlank()) {
-            System.out.println("Nome inválido");
-            return;
-        }
-        System.out.print("Sobrenome: ");
-        surname = sc.nextLine();
-        if (surname.isBlank()) {
-            System.out.println("Sobrenome inválido");
-            return;
-        }
+        System.out.println("ADICIONAR NOVO CONTATO:");
 
+        try {
+        name = Input.stringNotNullable("NOME: ", 3);
+        surname = Input.stringNotNullable("SOBRENOME: ", 3);
         contactController.save(name, surname);
-
+        } catch (Exception ex) {
+        	System.out.println("PARÂMETROS INCORRETOS!");
+        	System.out.println("VOLTANDO PARA O MENU PRINCIPAL...");
+        }
     }
+
 
     public static void list(List<Contact> contacts) {
         int index = 0;
@@ -145,14 +142,13 @@ public class ContactUI {
 
         }
         return option;
-
     }
 
     public static void search() {
         ContactController contactController = new ContactController();
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Digite o termo para buscar o contato: ");
+        System.out.print("DIGITE O TERMO PARA BUSCAR O CONTATO: ");
         String term = sc.nextLine().trim().toUpperCase();
         contactController.search(term);
     }
@@ -162,11 +158,11 @@ public class ContactUI {
         Scanner sc = new Scanner(System.in);
         Integer index;
 
-        System.out.print("Digite o index que deseja remover: ");
+        System.out.print("DIGITE O ID QUE DESEJA: ");
         index = sc.nextInt();
         contactController.remove(index);
     }
-
+    
     public static void view(Contact contact) {
         boolean working = true;
 
@@ -190,6 +186,5 @@ public class ContactUI {
             }
         }
     }
-
 
 }

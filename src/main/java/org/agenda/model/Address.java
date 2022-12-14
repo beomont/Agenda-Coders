@@ -63,12 +63,12 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Endereço{" +
+        return "ENDEREÇO{" +
                 "CEP: " + cep +
-                ", Logradouro: " + address +
-                ", Número: " + number +
-                ", Estado: " + state +
-                ", Cidade: " + city +
+                ", LOGRADOURO: " + address +
+                ", NÚMERO: " + number +
+                ", ESTADO: " + state +
+                ", CIDADE: " + city +
                 '}';
     }
 

@@ -33,9 +33,9 @@ public class Telephone {
 
     @Override
     public String toString() {
-        return "Telephone{" +
-                "ddd='" + ddd + '\'' +
-                ", number='" + number + '\'' +
+        return "TELEPHONE{" +
+                "DDD='" + ddd + '\'' +
+                ", NUMBER='" + number + '\'' +
                 '}';
     }
 

@@ -13,12 +13,14 @@ public class Home {
         int option;
 
         while (executing) {
-            option = MenuCreator.exec("Digite a opção desejada:", "sair", "Adicionar contato",
-                    "Listar contatos", "Pesquisar contato", "Remover contato", "Remover todos contatos");
+
+            option = MenuCreator.exec("DIGITE A OPÇÃO DESEJADA:", "SAIR", "ADICIONAR CONTATO",
+                    "LISTAR CONTATOS", "PESQUISAR CONTATOS", "REMOVER CONTATO", "REMOVER TODOS CONTATOS");
+
 
             switch (option) {
                 case 0 -> {
-                    System.out.println("Aplicação encerrada!");
+                    System.out.println("APLICAÇÃO ENCERRADA!");
                     executing = false;
                 }
                 case 1 -> {
@@ -36,7 +38,8 @@ public class Home {
                 case 5 -> {
                     contactController.deleteAll();
                 }
-                default -> System.out.println("Opção inválida");
+
+                default -> System.out.println("OPÇÃO INVÁLIDA");
             }
         }
     }

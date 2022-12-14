@@ -20,6 +20,7 @@ public class TelephoneUI {
         camposTelephone.add(ddd);
 
         numero = Input.stringNotNullable("NÚMERO: ", 3);
+
         camposTelephone.add(numero);
 
         return camposTelephone;
@@ -115,10 +116,12 @@ public class TelephoneUI {
         System.out.println("------- TELEFONES -------");
 
         for (int i = 0; i < contact.getAllTelephones().size(); i++) {
+
             Telephone phoneTemp = contact.getAllTelephones().get(i);
             System.out.println(" ID: " + i);
             System.out.println(" NUMERO: (" + phoneTemp.getDdd() + ") " + phoneTemp.getNumber());
             System.out.println("----------------------");
+
         }
 
         int indexEscolhido = Input.integer("DIGITE O ID DO TELEFONE QUE DESEJA REMOVER: ");

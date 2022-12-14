@@ -19,8 +19,9 @@ public class TelephoneController {
 
         if (contact.addTelephone(telephone)) {
             System.out.println("Telefone Salvo!");
+
         } else {
-            System.out.println("Telefone já cadastrado.");
+            System.out.println("TELEFONE JÁ CADASTRADO!");
         }
 
     }

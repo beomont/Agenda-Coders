@@ -19,7 +19,7 @@ public class AddressUI {
         List<String> camposAdress = new ArrayList<>();
         String cep, street, number, state, city;
 
-        System.out.println("ADICIONAR TELEFONE:");
+        System.out.println("ADICIONAR ENDEREÇO:");
 
         cep = Input.stringNotNullable("CEP: ", 3);
         camposAdress.add(cep);
@@ -153,6 +153,7 @@ public class AddressUI {
 
         //TO DO SE USUÁRIO INSERIR INDEX INCORRETO, FAZER O TRATAMENTO
         int indexEscolhido = Input.integer("DIGITE O ID DO ENDEREÇO QUE DESEJA REMOVER: ");
+
         return indexEscolhido;
     }
 

@@ -1,7 +1,10 @@
 package org.agenda.controller;
 
+import java.util.Scanner;
+
 import org.agenda.database.Database;
 import org.agenda.model.Contact;
+import org.agenda.utils.MenuCreator;
 import org.agenda.views.ContactUI;
 
 public class ContactController {
@@ -34,10 +37,18 @@ public class ContactController {
         Database db = Database.getInstance();
 
         if (db.addContact(contact)) {
-            System.out.println("Contato salvo");
-        } else {
-            System.out.println("Contato duplicado!");
-        }
+			System.out.println("");
+			System.out.println("-----------------");
+			System.out.println("| CONTATO SALVO |");
+			System.out.println("-----------------");
+			System.out.println("");
+		} else {
+			System.out.println("");
+			System.out.println("----------------------");
+			System.out.println("| CONTATO DUPLICADO! |");
+			System.out.println("----------------------");
+			System.out.println("");
+		}
     }
 
     public void deleteAll() {

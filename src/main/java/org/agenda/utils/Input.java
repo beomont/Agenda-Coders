@@ -31,9 +31,9 @@ public class Input {
 
         return option;
     }
-
+//TODO: FAZER VALIDAÇÃO
     public static String string(String nomeDoCampo) {
-        System.out.printf("Por favor informe o %s\n", nomeDoCampo);
+        System.out.printf("POR FAVOR, INFORME O %s\n", nomeDoCampo);
         return new Scanner(System.in).nextLine().trim();
     }
 
@@ -54,13 +54,13 @@ public class Input {
             } catch (Exception ex) {
                 tentadas += 1;
 
-                System.out.printf("msg: %s, não pode ser nulo\n", ex.getMessage());
+                System.out.printf("MSG: %s, NÃO PODE SER NULO\n", ex.getMessage());
                 if (tentadas < tentativas) {
                     isInvalid = true;
                     continue;
                 }
 
-                throw new Exception("Número de tentativas excedidas");
+                throw new Exception("NÚMERO DE TENTATIVAS EXCEDIDAS");
             }
 
         } while (isInvalid);

@@ -22,8 +22,9 @@ public class AddressController {
 
         if (contact.addAddress(address)) {
             System.out.println("Endereço Salvo!");
+
         } else {
-            System.out.println("Endereço já cadastrado.");
+            System.out.println("ENDEREÇO JÁ CADASTRADO!");
         }
 
     }
