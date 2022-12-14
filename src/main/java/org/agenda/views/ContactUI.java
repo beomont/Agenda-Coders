@@ -33,10 +33,18 @@ public class ContactUI {
     public static void list(List<Contact> contacts) {
         int index = 0;
         int tentativas = 0;
-        boolean working = true;
+        boolean working;
 
-        while (working) {
+        do {
+            working = false;
+
             try {
+
+                if(contacts.size() == 0){
+                    System.out.println("NENHUM CONTATO ENCONTRADO PARA O TERMO INFORMADO\n");
+                    break;
+                }
+
                 if (contacts.size() > 1) {
 
                     System.out.println("");
@@ -49,31 +57,37 @@ public class ContactUI {
                     }
 
                     int indexOption = getIndex();
-                    if (indexOption < contacts.size()) {
-                        ContactUI.view(contacts.get(indexOption));
-                        break;
+                    if (indexOption > contacts.size()) {
+                        System.out.println("OPÇÃO INVÁLIDA\n");
+                        tentativas++;
+                        working = true;
+                        continue;
                     }
-
-                    System.out.println("OPÇÃO INVÁLIDA\n");
-                    tentativas++;
 
                     if (tentativas > 3) {
                         System.out.println("MULTIPLAS TENTATIVAS INVÁLIDAS\n");
                         break;
                     }
 
+                    ContactUI.view(contacts.get(indexOption));
+
                 } else {
                     ContactUI.view(contacts.get(0));
                     break;
                 }
+
             } catch (Exception ex) {
                 System.out.println("OPÇÃO INVÁLIDA\n");
                 tentativas++;
+                working = true;
+
+                if (tentativas > 3) {
+                    System.out.println("MULTIPLAS TENTATIVAS INVÁLIDAS\n");
+                    break;
+                }
             }
 
-        }
-
-
+        } while (working);
     }
 
     public static int getIndex() throws Exception {
