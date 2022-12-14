@@ -113,20 +113,36 @@ public class TelephoneUI {
     }
 
     public static int delete(Contact contact) throws Exception {
-        System.out.println("------- TELEFONES -------");
+        boolean working = true;
+        int tentativas = 0;
+        int index = 0;
 
-        for (int i = 0; i < contact.getAllTelephones().size(); i++) {
+        while (working) {
 
-            Telephone phoneTemp = contact.getAllTelephones().get(i);
-            System.out.println(" ID: " + i);
-            System.out.println(" NUMERO: (" + phoneTemp.getDdd() + ") " + phoneTemp.getNumber());
-            System.out.println("----------------------");
+            System.out.println("------- TELEFONES -------");
 
+            for (int i = 0; i < contact.getAllTelephones().size(); i++) {
+                Telephone phoneTemp = contact.getAllTelephones().get(i);
+                System.out.println(" ID: " + i);
+                System.out.println(" NUMERO: (" + phoneTemp.getDdd() + ") " + phoneTemp.getNumber());
+                System.out.println("----------------------");
+            }
+            System.out.println("");
+
+            index = Input.integer("DIGITE O ID DO TELEFONE QUE DESEJA REMOVER: ");
+            System.out.println("");
+
+            if (index >= contact.getAllTelephones().size()) {
+                System.out.println("OPÇÂO INVÀLIDA\n");
+                tentativas++;
+                continue;
+            }
+
+            if (tentativas > 3) {
+                throw new Exception("MULTIPLAS TENTATIVAS INCORRETAS");
+            }
         }
 
-        int indexEscolhido = Input.integer("DIGITE O ID DO TELEFONE QUE DESEJA REMOVER: ");
-        System.out.println("");
-
-        return indexEscolhido;
+        return index;
     }
 }

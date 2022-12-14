@@ -39,7 +39,7 @@ public class AddressUI {
     }
 
 
-    public static void list(Contact contact){
+    public static void list(Contact contact) {
 
         boolean working = true;
         int originalAmmount = 0;
@@ -132,26 +132,43 @@ public class AddressUI {
     }
 
     public static int delete(Contact contact) throws Exception {
-        System.out.println("------------ ENDEREÇOS ------------");
+        boolean working = true;
+        int tentativas = 0;
+        int index = 0;
 
-        for (int i = 0; i < contact.getAllAddresses().size(); i++) {
-            Address addressTemp = contact.getAllAddresses().get(i);
+        while (working) {
 
-            System.out.println(" ID: " + i);
-            System.out.println("ENDEREÇO: " + addressTemp.getAddress() + ", "
-                    + addressTemp.getNumber() + ", "
-                    + addressTemp.getCep() + " - "
-                    + addressTemp.getCity() + " - "
-                    + addressTemp.getState()
-            );
-            System.out.println("--------------------------------");
+            System.out.println("------------ ENDEREÇOS ------------");
+
+            for (int i = 0; i < contact.getAllAddresses().size(); i++) {
+                Address addressTemp = contact.getAllAddresses().get(i);
+
+                System.out.println(" ID: " + i);
+                System.out.println("ENDEREÇO: " + addressTemp.getAddress() + ", "
+                        + addressTemp.getNumber() + ", "
+                        + addressTemp.getCep() + " - "
+                        + addressTemp.getCity() + " - "
+                        + addressTemp.getState()
+                );
+                System.out.println("--------------------------------");
+            }
             System.out.println("");
+
+            index = Input.integer("DIGITE O ID DO ENDEREÇO QUE DESEJA REMOVER: ");
+            System.out.println("");
+
+            if (index >= contact.getAllAddresses().size()) {
+                System.out.println("OPÇÂO INVÀLIDA\n");
+                tentativas++;
+                continue;
+            }
+
+            if (tentativas > 3) {
+                throw new Exception("MULTIPLAS TENTATIVAS INCORRETAS");
+            }
+
         }
-
-        int indexEscolhido = Input.integer("DIGITE O ID DO ENDEREÇO QUE DESEJA REMOVER: ");
-        System.out.println("");
-
-        return indexEscolhido;
+        return index;
     }
 
 }
