@@ -60,6 +60,7 @@ public class ContactUI {
                     int indexOption = getIndex();
                     if (indexOption > contacts.size()) {
                         System.out.println("-> Opção inválida\n");
+                        index = 0;
                         tentativas++;
                         working = true;
                         continue;

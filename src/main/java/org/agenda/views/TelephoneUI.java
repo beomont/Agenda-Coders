@@ -135,6 +135,7 @@ public class TelephoneUI {
 
             if (index >= contact.getAllTelephones().size()) {
                 System.out.println("-> Opção inválida\n");
+                index = 0;
                 tentativas++;
                 continue;
             }

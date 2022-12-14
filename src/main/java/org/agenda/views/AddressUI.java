@@ -158,6 +158,7 @@ public class AddressUI {
 
             if (index >= contact.getAllAddresses().size()) {
                 System.out.println("-> Opção inválida\n");
+                index = 0;
                 tentativas++;
                 continue;
             }
