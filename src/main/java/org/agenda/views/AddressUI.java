@@ -1,7 +1,12 @@
 package org.agenda.views;
 
+import org.agenda.controller.AddressController;
+import org.agenda.controller.TelephoneController;
 import org.agenda.database.Database;
+import org.agenda.model.Address;
 import org.agenda.model.Contact;
+import org.agenda.utils.Input;
+import org.agenda.utils.MenuCreator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,49 +14,145 @@ import java.util.Scanner;
 
 public class AddressUI {
 
-    public static List<String> add() {
+    public static List<String> add() throws Exception {
         Scanner sc = new Scanner(System.in);
         List<String> camposAdress = new ArrayList<>();
         String cep, street, number, state, city;
 
         System.out.println("ADICIONAR ENDEREÇO:");
 
-        System.out.print("CEP: ");
-        cep = sc.nextLine();
+        cep = Input.stringNotNullable("CEP: ", 3);
         camposAdress.add(cep);
 
-        System.out.print("LOGRADOURO: ");
-        street = sc.nextLine();
+        street = Input.stringNotNullable("LOGRADOURO: ", 3);
         camposAdress.add(street);
 
-        System.out.print("NÚMERO: ");
-        number = sc.nextLine();
+        number = Input.stringNotNullable("NUMERO: ", 3);
         camposAdress.add(number);
 
-        System.out.print("ESTADO: ");
-        state = sc.nextLine();
+        state = Input.stringNotNullable("ESTADO: ", 3);
         camposAdress.add(state);
 
-        System.out.print("CIDADE: ");
-        city = sc.nextLine();
+        city = Input.stringNotNullable("CIDADE: ", 3);
         camposAdress.add(city);
 
         return camposAdress;
 
     }
 
-    public static int delete(int index) {
-        Contact contact = Database.getInstance().getContacts().get(index);
-        Scanner sc = new Scanner(System.in);
+
+    public static void list(Contact contact){
+
+        boolean working = true;
+        int originalAmmount = 0;
+        int ammount = 0;
+        int start = 0;
+
+        while (working) {
+
+            try {
+
+                if (ammount == 0) {
+                    ammount = Input.integer("Informe a Quantidade de endereços por página: ");
+                    originalAmmount = ammount;
+                    System.out.println("");
+                }
+
+                if (start < 0 || start > contact.getAllAddresses().size()) start = 0;
+                if (ammount < 0) ammount = 0;
+                if (ammount > contact.getAllAddresses().size()) ammount = contact.getAllAddresses().size();
+                if (start + ammount > contact.getAllAddresses().size())
+                    start = contact.getAllAddresses().size() - ammount;
+
+                System.out.println("----------- ENDEREÇOS -----------");
+                if (contact.getAllAddresses().size() == 0) System.out.println("NENHUM ENDEREÇO ENCONTRADO");
+
+                for (int i = start; i < start + ammount; i++) {
+                    if (i == contact.getAllAddresses().size()) break;
+                    Address addressTemp = contact.getAllAddresses().get(i);
+
+                    System.out.println("ID: " + i);
+                    System.out.println("ENDEREÇO: " + addressTemp.getAddress() + ", "
+                            + addressTemp.getNumber() + ", "
+                            + addressTemp.getCep() + " - "
+                            + addressTemp.getCity() + " - "
+                            + addressTemp.getState()
+                    );
+                    System.out.println("---------------------------------");
+                }
+
+                System.out.println("");
+
+
+                int option;
+                if (contact.getAllTelephones().size() > 0) {
+                    option = MenuCreator.exec("OPÇÔES DE ENDEREÇO:", "VOLTAR", "PAGINA SEGUINTE", "PAGINA ANTERIOR", "ADICIONAR ENDEREÇO", "REMOVER ENDEREÇO");
+
+                    switch (option) {
+                        case 0 -> {
+                            working = false;
+                        }
+                        case 1 -> {
+                            start = start + ammount;
+                        }
+                        case 2 -> {
+                            start = start - ammount;
+                        }
+                        case 3 -> {
+                            AddressController.create(contact);
+                        }
+
+                        case 4 -> {
+                            AddressController.remove(contact);
+                        }
+
+                        default -> System.out.println("OPÇÂO INVÁLIDA\n");
+                    }
+                } else {
+                    option = MenuCreator.exec("OPÇÔES DE ENDEREÇO:", "VOLTAR", "ADICIONAR ENDEREÇO", "REMOVER ENDEREÇO");
+
+                    switch (option) {
+                        case 0 -> {
+                            working = false;
+                        }
+                        case 1 -> {
+                            AddressController.create(contact);
+                        }
+                        case 2 -> {
+                            AddressController.remove(contact);
+                        }
+                        default -> System.out.println("OPÇÂO INVÁLIDA\n");
+                    }
+
+                }
+
+                ammount = originalAmmount;
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage() + " VOLTANDO AO MENU PRINCIPAL...");
+            }
+        }
+    }
+
+    public static int delete(Contact contact) throws Exception {
+        System.out.println("------------ ENDEREÇOS ------------");
 
         for (int i = 0; i < contact.getAllAddresses().size(); i++) {
-            System.out.println("ID: |" + i + "| " + contact.getAllAddresses().get(i));
+            Address addressTemp = contact.getAllAddresses().get(i);
+
+            System.out.println(" ID: " + i);
+            System.out.println("ENDEREÇO: " + addressTemp.getAddress() + ", "
+                    + addressTemp.getNumber() + ", "
+                    + addressTemp.getCep() + " - "
+                    + addressTemp.getCity() + " - "
+                    + addressTemp.getState()
+            );
+            System.out.println("--------------------------------");
+            System.out.println("");
         }
 
 
         //TO DO SE USUÁRIO INSERIR INDEX INCORRETO, FAZER O TRATAMENTO
-        System.out.print("QUAL ID DESEJA EXCLUIR? ");
-        int indexEscolhido = sc.nextInt();
+        int indexEscolhido = Input.integer("DIGITE O ID DO ENDEREÇO QUE DESEJA REMOVER: ");
 
         return indexEscolhido;
     }

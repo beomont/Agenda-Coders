@@ -3,8 +3,33 @@ package org.agenda.utils;
 import java.util.Scanner;
 
 public class Input {
-    public static int integer() {
-        return new Scanner(System.in).nextInt();
+    public static int integer(String mensagem) throws Exception {
+
+        int option = 0;
+        int tentadas = 0;
+
+        boolean isInvalid;
+
+        do{
+            isInvalid = false;
+
+            try {
+                System.out.print(mensagem);
+                option = new Scanner(System.in).nextInt();
+
+            }catch (Exception ex) {
+                tentadas += 1;
+                System.out.printf("Opção inválida" + "\n\n");
+                if (tentadas < 3) {
+                    isInvalid = true;
+                    continue;
+                }
+                throw new Exception("Multiplas tentativas incorretas");
+            }
+
+        }while (isInvalid);
+
+        return option;
     }
 //TODO: FAZER VALIDAÇÃO
     public static String string(String nomeDoCampo) {

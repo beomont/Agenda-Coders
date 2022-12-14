@@ -9,8 +9,7 @@ import java.util.List;
 
 public class AddressController {
 
-    public static void create(int index) {
-        Database db = Database.getInstance();
+    public static void create(Contact contact) throws Exception {
         List<String> camposAddress = AddressUI.add();
 
         String cep = camposAddress.get(0).toString();
@@ -20,17 +19,18 @@ public class AddressController {
         String cidade = camposAddress.get(4).toString();
 
         Address address = new Address(cep, logradouro, numero, estado, cidade);
-        if (db.get(index).addAddress(address)) {
-            System.out.println("ENDEREÇO SALVO");
+
+        if (contact.addAddress(address)) {
+            System.out.println("Endereço Salvo!");
+
         } else {
             System.out.println("ENDEREÇO JÁ CADASTRADO!");
         }
 
     }
 
-    public static void remove(int index) {
-        Contact contact = Database.getInstance().getContacts().get(index);
-        contact.removeAddress(AddressUI.delete(index));
+    public static void remove(Contact contact) throws Exception {
+        contact.removeAddress(AddressUI.delete(contact));
     }
 
 

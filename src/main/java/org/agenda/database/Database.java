@@ -78,10 +78,6 @@ public class Database {
         }
     }
 
-    public List<Contact> getAll() {
-        return contacts;
-    }
-
     public Contact get(int index) {
         return contacts.get(index);
     }
