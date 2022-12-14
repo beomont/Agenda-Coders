@@ -1,6 +1,5 @@
 package org.agenda.controller;
 
-import org.agenda.database.Database;
 import org.agenda.model.Address;
 import org.agenda.model.Contact;
 import org.agenda.views.AddressUI;

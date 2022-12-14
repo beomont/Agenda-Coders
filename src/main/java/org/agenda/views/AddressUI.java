@@ -1,8 +1,6 @@
 package org.agenda.views;
 
 import org.agenda.controller.AddressController;
-import org.agenda.controller.TelephoneController;
-import org.agenda.database.Database;
 import org.agenda.model.Address;
 import org.agenda.model.Contact;
 import org.agenda.utils.Input;
@@ -150,8 +148,6 @@ public class AddressUI {
             System.out.println("");
         }
 
-
-        //TO DO SE USUÁRIO INSERIR INDEX INCORRETO, FAZER O TRATAMENTO
         int indexEscolhido = Input.integer("DIGITE O ID DO ENDEREÇO QUE DESEJA REMOVER: ");
         System.out.println("");
 

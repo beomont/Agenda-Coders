@@ -4,7 +4,6 @@ import org.agenda.controller.ContactController;
 import org.agenda.model.Contact;
 import org.agenda.utils.Input;
 import org.agenda.utils.MenuCreator;
-import org.agenda.model.Telephone;
 
 
 import java.util.List;

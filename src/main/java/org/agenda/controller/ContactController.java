@@ -1,10 +1,7 @@
 package org.agenda.controller;
 
-import java.util.Scanner;
-
 import org.agenda.database.Database;
 import org.agenda.model.Contact;
-import org.agenda.utils.MenuCreator;
 import org.agenda.views.ContactUI;
 
 public class ContactController {
@@ -12,11 +9,6 @@ public class ContactController {
     public String paginatedList() {
         Database db = Database.getInstance();
         return ContactUI.paginatedList(db.getContacts());
-    }
-
-    public void list() {
-        Database db = Database.getInstance();
-        ContactUI.list(db.getContacts());
     }
 
     public void search(String value) {
