@@ -3,12 +3,9 @@ package org.agenda.views;
 import org.agenda.controller.ContactController;
 import org.agenda.utils.MenuCreator;
 
-import java.util.Scanner;
-
 public class Home {
     public static void init() {
-        Scanner sc = new Scanner(System.in);
-        ContactController contactController = new ContactController();
+            ContactController contactController = new ContactController();
         boolean executing = true;
         int option;
 

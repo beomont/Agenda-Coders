@@ -8,12 +8,10 @@ import org.agenda.utils.MenuCreator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class AddressUI {
 
     public static List<String> add() throws Exception {
-        Scanner sc = new Scanner(System.in);
         List<String> camposAdress = new ArrayList<>();
         String cep, street, number, state, city;
 

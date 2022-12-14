@@ -7,12 +7,10 @@ import org.agenda.utils.MenuCreator;
 
 
 import java.util.List;
-import java.util.Scanner;
 
 public class ContactUI {
 
     public static void add() {
-        Scanner sc = new Scanner(System.in);
         ContactController contactController = new ContactController();
         String name;
         String surname;
@@ -34,27 +32,45 @@ public class ContactUI {
 
     public static void list(List<Contact> contacts) {
         int index = 0;
+        int tentativas = 0;
+        boolean working = true;
 
-        try {
-            if (contacts.size() > 1) {
+        while (working) {
+            try {
+                if (contacts.size() > 1) {
 
-                System.out.println("");
-                for (Contact contact : contacts) {
-                    System.out.println("-------- CONTATO -------");
-                    System.out.println("ID: " + index);
-                    System.out.println("Nome: " + contact.getName());
-                    System.out.println("Sobrenome: " + contact.getSurname());
-                    System.out.println("------------------------");
-                    index++;
+                    System.out.println("");
+                    for (Contact contact : contacts) {
+                        System.out.println("-------- CONTATO -------");
+                        System.out.println("ID: " + index);
+                        System.out.println("Nome: " + contact.getName() + " " + contact.getSurname());
+                        System.out.println("------------------------");
+                        index++;
+                    }
+
+                    int indexOption = getIndex();
+                    if (indexOption < contacts.size()) {
+                        ContactUI.view(contacts.get(indexOption));
+                        break;
+                    }
+
+                    System.out.println("OPÇÃO INVÁLIDA\n");
+                    tentativas++;
+
+                    if (tentativas > 3) {
+                        System.out.println("MULTIPLAS TENTATIVAS INVÁLIDAS\n");
+                        break;
+                    }
+
+                } else {
+                    ContactUI.view(contacts.get(0));
+                    break;
                 }
-
-                int indexOption = getIndex();
-                ContactUI.view(contacts.get(indexOption));
-            } else {
-                ContactUI.view(contacts.get(0));
+            } catch (Exception ex) {
+                System.out.println("OPÇÃO INVÁLIDA\n");
+                tentativas++;
             }
-        } catch (Exception ex) {
-            System.out.println("Opção inválida");
+
         }
 
 
@@ -147,10 +163,7 @@ public class ContactUI {
 
     public static void search() {
         ContactController contactController = new ContactController();
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("DIGITE O TERMO PARA BUSCAR O CONTATO: ");
-        String term = sc.nextLine().trim().toUpperCase();
+        String term = Input.string("DIGITE O TERMO PARA BUSCAR O CONTATO: ");
         contactController.search(term);
     }
 
@@ -178,7 +191,7 @@ public class ContactUI {
             System.out.println("OPÇÃO INVÁLIDA\n");
             tentativas++;
 
-            if(tentativas > 3){
+            if (tentativas > 3) {
                 throw new Exception("MULTIPLAS TENTATIVAS INCORRETAS");
             }
         }
