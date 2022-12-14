@@ -57,12 +57,17 @@ public class ContactController {
     }
 
     public void remove(Integer index) {
+
         Database db = Database.getInstance();
 
-        if (index != null) {
-            db.remove(index);
-        } else {
-            ContactUI.remove();
+        try{
+            if (index == null ) {
+                ContactUI.remove(db.getContacts());
+            } else{
+                db.remove(index);
+            }
+        }catch (Exception ex){
+            System.out.println(ex.getMessage() + "\n");
         }
     }
 

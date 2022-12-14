@@ -125,6 +125,7 @@ public class TelephoneUI {
         }
 
         int indexEscolhido = Input.integer("DIGITE O ID DO TELEFONE QUE DESEJA REMOVER: ");
+        System.out.println("");
 
         return indexEscolhido;
     }

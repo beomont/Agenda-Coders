@@ -153,6 +153,7 @@ public class AddressUI {
 
         //TO DO SE USUÁRIO INSERIR INDEX INCORRETO, FAZER O TRATAMENTO
         int indexEscolhido = Input.integer("DIGITE O ID DO ENDEREÇO QUE DESEJA REMOVER: ");
+        System.out.println("");
 
         return indexEscolhido;
     }

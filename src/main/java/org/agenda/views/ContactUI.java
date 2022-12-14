@@ -21,12 +21,14 @@ public class ContactUI {
         System.out.println("ADICIONAR NOVO CONTATO:");
 
         try {
-        name = Input.stringNotNullable("NOME: ", 3);
-        surname = Input.stringNotNullable("SOBRENOME: ", 3);
-        contactController.save(name, surname);
+            name = Input.stringNotNullable("NOME: ", 3);
+            surname = Input.stringNotNullable("SOBRENOME: ", 3);
+
+            contactController.save(name, surname);
+
         } catch (Exception ex) {
-        	System.out.println("PARÂMETROS INCORRETOS!");
-        	System.out.println("VOLTANDO PARA O MENU PRINCIPAL...");
+            System.out.println("PARÂMETROS INCORRETOS!");
+            System.out.println("VOLTANDO PARA O MENU PRINCIPAL...");
         }
     }
 
@@ -34,27 +36,27 @@ public class ContactUI {
     public static void list(List<Contact> contacts) {
         int index = 0;
 
-       try {
-           if (contacts.size() > 1){
+        try {
+            if (contacts.size() > 1) {
 
-               System.out.println("");
-               for (Contact contact : contacts) {
-                   System.out.println("-------- CONTATO -------");
-                   System.out.println("ID: " + index);
-                   System.out.println("Nome: " + contact.getName());
-                   System.out.println("Sobrenome: " + contact.getSurname());
-                   System.out.println("------------------------");
-                   index++;
-               }
+                System.out.println("");
+                for (Contact contact : contacts) {
+                    System.out.println("-------- CONTATO -------");
+                    System.out.println("ID: " + index);
+                    System.out.println("Nome: " + contact.getName());
+                    System.out.println("Sobrenome: " + contact.getSurname());
+                    System.out.println("------------------------");
+                    index++;
+                }
 
-               int indexOption = getIndex();
-               ContactUI.view(contacts.get(indexOption));
-           }else{
-               ContactUI.view(contacts.get(0));
-           }
-       }catch (Exception ex){
-           System.out.println("Opção inválida");
-       }
+                int indexOption = getIndex();
+                ContactUI.view(contacts.get(indexOption));
+            } else {
+                ContactUI.view(contacts.get(0));
+            }
+        } catch (Exception ex) {
+            System.out.println("Opção inválida");
+        }
 
 
     }
@@ -98,7 +100,7 @@ public class ContactUI {
                 boolean better = true;
 
                 while (better) {
-                    if(contacts.size() == 0){
+                    if (contacts.size() == 0) {
                         switch (MenuCreator.exec(".:: NAVEGAÇÂO ::.", "SAIR", "ADICIONAR CONTATO")) {
                             case 0 -> {
                                 better = false;
@@ -111,7 +113,7 @@ public class ContactUI {
                             }
                             default -> System.out.println(" OPÇÂO INVÁLIDA\n");
                         }
-                    }else{
+                    } else {
                         switch (MenuCreator.exec(".:: NAVEGAÇÂO ::.", "SAIR", "PAGINA SEGUINTE", "PAGINA ANTERIOR", "EXIBIR CONTATO")) {
                             case 0 -> {
                                 better = false;
@@ -153,16 +155,38 @@ public class ContactUI {
         contactController.search(term);
     }
 
-    public static void remove() {
+    public static void remove(List<Contact> contacts) throws Exception {
         ContactController contactController = new ContactController();
-        Scanner sc = new Scanner(System.in);
-        Integer index;
 
-        System.out.print("DIGITE O ID QUE DESEJA: ");
-        index = sc.nextInt();
-        contactController.remove(index);
+        boolean working = true;
+        int tentativas = 0;
+
+        while (working) {
+            System.out.println("------ CONTATOS ------");
+
+            for (int i = 0; i < contacts.size(); i++) {
+                System.out.println("ID: " + i + " => NOME: " + contacts.get(i).getName() + " " + contacts.get(i).getSurname());
+                System.out.println("----------------------");
+            }
+
+            int index = Input.integer("DIGITE O ID DO CONTATO QUE DESEJA REMOVER: ");
+            System.out.println("");
+
+            if (index < contacts.size()) {
+                contactController.remove(index);
+                break;
+            }
+            System.out.println("OPÇÂO INVÀLIDA\n");
+            tentativas++;
+
+            if(tentativas > 3){
+                throw new Exception("MULTIPLAS TENTATIVAS INCORRETAS");
+            }
+        }
+
+
     }
-    
+
     public static void view(Contact contact) {
         boolean working = true;
 
