@@ -25,7 +25,7 @@ public class ContactController {
     }
 
     public void save(String name, String surname) {
-        Contact contact = new Contact(name, surname);
+        Contact contact = new Contact(name.toUpperCase(), surname.toUpperCase());
         Database db = Database.getInstance();
 
         if (db.addContact(contact)) {

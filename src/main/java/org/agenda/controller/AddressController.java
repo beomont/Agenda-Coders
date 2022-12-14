@@ -17,7 +17,7 @@ public class AddressController {
         String estado = camposAddress.get(3).toString();
         String cidade = camposAddress.get(4).toString();
 
-        Address address = new Address(cep, logradouro, numero, estado, cidade);
+        Address address = new Address(cep, logradouro.toUpperCase(), numero, estado.toUpperCase(), cidade.toUpperCase());
 
         if (contact.addAddress(address)) {
             System.out.println("ENDEREÇO SALVO!\n");
