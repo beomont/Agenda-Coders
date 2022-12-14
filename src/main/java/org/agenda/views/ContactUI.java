@@ -175,7 +175,7 @@ public class ContactUI {
                 contactController.remove(index);
                 break;
             }
-            System.out.println("OPÇÂO INVÀLIDA\n");
+            System.out.println("OPÇÃO INVÁLIDA\n");
             tentativas++;
 
             if(tentativas > 3){

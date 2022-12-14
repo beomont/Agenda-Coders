@@ -144,7 +144,7 @@ public class AddressUI {
                 Address addressTemp = contact.getAllAddresses().get(i);
 
                 System.out.println(" ID: " + i);
-                System.out.println("ENDEREÇO: " + addressTemp.getAddress() + ", "
+                System.out.println(" ENDEREÇO: " + addressTemp.getAddress() + ", "
                         + addressTemp.getNumber() + ", "
                         + addressTemp.getCep() + " - "
                         + addressTemp.getCity() + " - "
@@ -166,7 +166,7 @@ public class AddressUI {
             if (tentativas > 3) {
                 throw new Exception("MULTIPLAS TENTATIVAS INCORRETAS");
             }
-
+            break;
         }
         return index;
     }

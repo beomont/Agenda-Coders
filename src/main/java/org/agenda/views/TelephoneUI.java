@@ -141,6 +141,7 @@ public class TelephoneUI {
             if (tentativas > 3) {
                 throw new Exception("MULTIPLAS TENTATIVAS INCORRETAS");
             }
+           break;
         }
 
         return index;

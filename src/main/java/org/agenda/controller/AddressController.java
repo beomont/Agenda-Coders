@@ -20,10 +20,10 @@ public class AddressController {
         Address address = new Address(cep, logradouro, numero, estado, cidade);
 
         if (contact.addAddress(address)) {
-            System.out.println("Endereço Salvo!");
+            System.out.println("ENDEREÇO SALVO!\n");
 
         } else {
-            System.out.println("ENDEREÇO JÁ CADASTRADO!");
+            System.out.println("ENDEREÇO JÁ CADASTRADO!\n");
         }
 
     }

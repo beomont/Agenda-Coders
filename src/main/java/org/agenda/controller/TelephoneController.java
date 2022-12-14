@@ -17,10 +17,10 @@ public class TelephoneController {
         Telephone telephone = new Telephone(ddd, numero);
 
         if (contact.addTelephone(telephone)) {
-            System.out.println("Telefone Salvo!");
+            System.out.println("TELEFONE SALVO\n");
 
         } else {
-            System.out.println("TELEFONE JÁ CADASTRADO!");
+            System.out.println("TELEFONE JÁ CADASTRADO!\n");
         }
 
     }
