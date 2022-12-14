@@ -85,7 +85,7 @@ public class AddressUI {
 
 
                 int option;
-                if (contact.getAllTelephones().size() > 0) {
+                if (contact.getAllAddresses().size() > 0) {
                     option = MenuCreator.exec("OPÇÔES DE ENDEREÇO:", "VOLTAR", "PAGINA SEGUINTE", "PAGINA ANTERIOR", "ADICIONAR ENDEREÇO", "REMOVER ENDEREÇO");
 
                     switch (option) {
@@ -125,7 +125,7 @@ public class AddressUI {
                     }
 
                 }
-
+                option = 0;
                 ammount = originalAmmount;
             } catch (Exception ex) {
                 System.out.println(ex.getMessage() + " VOLTANDO AO MENU PRINCIPAL...");

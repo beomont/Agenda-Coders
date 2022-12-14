@@ -49,7 +49,7 @@ public class TelephoneUI {
                     start = contact.getAllTelephones().size() - ammount;
 
                 System.out.println("------ TELEFONES ------");
-                if (contact.getAllTelephones().size() == 0) System.out.println("Nenhum telefone encontrado");
+                if (contact.getAllTelephones().size() == 0) System.out.println("NENHUM TELEFONE ENCONTRADO");
 
                 for (int i = start; i < start + ammount; i++) {
                     if (i == contact.getAllTelephones().size()) break;
