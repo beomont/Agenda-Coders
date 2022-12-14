@@ -17,7 +17,7 @@ public class Home {
 
             switch (option) {
                 case 0 -> {
-                    System.out.println("APLICAÇÃO ENCERRADA!");
+                    System.out.println("Encerrando aplicação...");
                     executing = false;
                 }
                 case 1 -> {

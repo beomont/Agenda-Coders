@@ -178,7 +178,7 @@ public class ContactUI {
     public static void search() {
         ContactController contactController = new ContactController();
         String term = Input.string("DIGITE O TERMO PARA BUSCAR O CONTATO: ");
-        contactController.search(term);
+        contactController.search(term.toUpperCase());
     }
 
     public static void remove(List<Contact> contacts) throws Exception {
@@ -189,6 +189,12 @@ public class ContactUI {
 
         while (working) {
             System.out.println("------ CONTATOS ------");
+
+            if(contacts.size() == 0) {
+                System.out.println("NENHUM CONTATO CADASTRADO NA AGENDA");
+                System.out.println("voltando...\n");
+                break;
+            }
 
             for (int i = 0; i < contacts.size(); i++) {
                 System.out.println("ID: " + i + " => NOME: " + contacts.get(i).getName() + " " + contacts.get(i).getSurname());

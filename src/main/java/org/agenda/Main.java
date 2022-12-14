@@ -17,6 +17,7 @@ public class Main {
 
         try {
             db.close();
+            System.out.println("APLICAÇÃO ENCERRADA!");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
